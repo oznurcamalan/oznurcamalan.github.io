@@ -1,4 +1,14 @@
+---
+import { site } from '../data/site';
+---
+
 <footer>
-  <p>© {new Date().getFullYear()} Danışman Adı Soyadı</p>
+  <p>© {new Date().getFullYear()} {site.ad}</p>
   <p><a href="/kvkk">KVKK Aydınlatma Metni</a></p>
+  <p>
+    <small>
+      Bu sitedeki içerikler bilgilendirme amaçlıdır; tanı ya da tedavi yerine geçmez.
+      Kendinizi iyi hissetmiyorsanız size en yakın sağlık kuruluşuna başvurun. Acil durumlarda 112 Acil Çağrı Merkezi'ni arayınız.
+    </small>
+  </p>
 </footer>

@@ -1,13 +1,16 @@
 ---
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import { site } from '../data/site';
 
 interface Props {
   title: string;
   description?: string;
 }
 
-const { title, description = 'Psikolojik danışmanlık hizmetleri' } = Astro.props;
+const { title, description = `${site.unvan} ${site.ad}` } = Astro.props;
+const tamBaslik =
+  title === 'Ana Sayfa' ? `${site.ad} | ${site.unvan}` : `${title} | ${site.ad}`;
 ---
 
 <!doctype html>
@@ -16,7 +19,8 @@ const { title, description = 'Psikolojik danışmanlık hizmetleri' } = Astro.pr
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
-    <title>{title}</title>
+    <meta name="robots" content="noindex, nofollow" />
+    <title>{tamBaslik}</title>
   </head>
   <body>
     <Header />

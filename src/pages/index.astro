@@ -1,8 +1,46 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import RandevuButonlari from '../components/RandevuButonlari.astro';
+import { getCollection } from 'astro:content';
+import { site } from '../data/site';
+
+const sonMakaleler = (await getCollection('makaleler', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 3);
 ---
 
-<Layout title="Ana Sayfa">
-  <h1>Hoş geldiniz</h1>
-  <p>Bu sayfa daha sonra doldurulacak.</p>
+<Layout title="Ana Sayfa" description={site.slogan}>
+  <section>
+    <h1>{site.ad}</h1>
+    <p>{site.unvan}</p>
+    <p>{site.slogan}</p>
+    <RandevuButonlari />
+  </section>
+
+  <section>
+    <h2>Hizmetler</h2>
+    <ul>
+      {site.hizmetler.map((hizmet) => (
+        <li>
+          <h3>{hizmet.baslik}</h3>
+          <p>{hizmet.aciklama}</p>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  {sonMakaleler.length > 0 && (
+    <section>
+      <h2>Son Makaleler</h2>
+      <ul>
+        {sonMakaleler.map((makale) => (
+          <li>
+            <a href={`/makaleler/${makale.id}`}>{makale.data.title}</a>
+            <p>{makale.data.description}</p>
+          </li>
+        ))}
+      </ul>
+      <p><a href="/makaleler">Tüm makaleler</a></p>
+    </section>
+  )}
 </Layout>

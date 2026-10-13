@@ -1,8 +1,20 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import RandevuButonlari from '../components/RandevuButonlari.astro';
+import { site } from '../data/site';
 ---
 
-<Layout title="İletişim">
+<Layout title="İletişim" description={`${site.ad} ile iletişime geçin`}>
   <h1>İletişim</h1>
-  <p>Bu sayfa daha sonra doldurulacak.</p>
+
+  <p>
+    E-posta: <a href={`mailto:${site.eposta}`}>{site.eposta}</a>
+  </p>
+  <p>
+    Telefon: <a href={`tel:${site.telefonLink}`}>{site.telefon}</a>
+  </p>
+  <p>Şehir: {site.sehir}</p>
+
+  <p>Görüşme planlamak için aşağıdaki seçenekleri kullanabilirsiniz.</p>
+  <RandevuButonlari />
 </Layout>
