@@ -1,8 +1,22 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import RandevuButonlari from '../components/RandevuButonlari.astro';
 ---
 
-<Layout title="Randevu">
+<Layout title="Randevu" description="Ön görüşme ve randevu talebi">
   <h1>Randevu</h1>
-  <p>Bu sayfa daha sonra doldurulacak.</p>
+  <p>
+    İlk kez iletişime geçiyorsanız ön görüşme talep edebilir, daha önce görüştüyseniz
+    doğrudan randevu talep edebilirsiniz.
+  </p>
+
+  <RandevuButonlari />
+
+  <p>
+    <small>
+      Randevu formuna sağlık bilgisi ya da ayrıntılı kişisel bilgi yazmayınız.
+      Kişisel verilerinizin işlenmesi hakkında bilgi için
+      <a href="/kvkk">KVKK Aydınlatma Metni</a>'ni okuyabilirsiniz.
+    </small>
+  </p>
 </Layout>

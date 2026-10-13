@@ -1,0 +1,56 @@
+---
+// İki Cal.com butonu: Ön Görüşme (30min) ve Randevu (15min)
+---
+
+<div class="randevu-butonlari">
+  <button
+    type="button"
+    data-cal-link="oznurcamalan/ongorusme"
+    data-cal-namespace="30min"
+    data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
+  >
+    Ön Görüşme Talep Et
+  </button>
+
+  <button
+    type="button"
+    data-cal-link="oznurcamalan/seans"
+    data-cal-namespace="15min"
+    data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
+  >
+    Randevu Talep Et
+  </button>
+</div>
+
+<script is:inline>
+  (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+
+  Cal("init", "30min", {origin:"https://app.cal.com"});
+  Cal("init", "15min", {origin:"https://app.cal.com"});
+  Cal.config = Cal.config || {};
+  Cal.config.forwardQueryParams = true;
+
+  Cal.ns["30min"]("ui", {"hideEventTypeDetails":false,"layout":"month_view"});
+  Cal.ns["15min"]("ui", {"hideEventTypeDetails":false,"layout":"month_view"});
+</script>
+
+<style>
+  .randevu-butonlari {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+  .randevu-butonlari button {
+    padding: 0.8rem 1.4rem;
+    font-size: 1rem;
+    border: 0;
+    border-radius: 0.5rem;
+    background: #2f6f6a;
+    color: #fff;
+    cursor: pointer;
+  }
+  .randevu-butonlari button:hover {
+    opacity: 0.9;
+  }
+</style>
