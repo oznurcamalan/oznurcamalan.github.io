@@ -1,0 +1,29 @@
+local_backend: true
+
+backend:
+  name: github
+  repo: oznurcamalan/oznurcamalan.github.io
+  branch: main
+
+locale: tr
+
+media_folder: public/images/makaleler
+public_folder: /images/makaleler
+
+slug:
+  encoding: ascii
+  clean_accents: true
+
+collections:
+  - name: makaleler
+    label: Makaleler
+    label_singular: Makale
+    folder: src/content/makaleler
+    create: true
+    extension: md
+    fields:
+      - { label: Başlık, name: title, widget: string }
+      - { label: Kısa açıklama, name: description, widget: text }
+      - { label: Tarih, name: date, widget: datetime, format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
+      - { label: Taslak, name: draft, widget: boolean, default: false }
+      - { label: İçerik, name: body, widget: markdown }

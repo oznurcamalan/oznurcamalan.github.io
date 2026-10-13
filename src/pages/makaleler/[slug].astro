@@ -1,0 +1,27 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const makaleler = await getCollection('makaleler', ({ data }) => !data.draft);
+  return makaleler.map((makale) => ({
+    params: { slug: makale.id },
+    props: { makale },
+  }));
+}
+
+const { makale } = Astro.props;
+const { Content } = await render(makale);
+---
+
+<Layout title={makale.data.title} description={makale.data.description}>
+  <article>
+    <h1>{makale.data.title}</h1>
+    <p>
+      <time datetime={makale.data.date.toISOString()}>
+        {makale.data.date.toLocaleDateString('tr-TR')}
+      </time>
+    </p>
+    <Content />
+  </article>
+</Layout>

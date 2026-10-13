@@ -1,8 +1,19 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const makaleler = (await getCollection('makaleler', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 ---
 
 <Layout title="Makaleler">
-  <h1>Hoş geldiniz</h1>
-  <p>Bu sayfa daha sonra doldurulacak.</p>
+  <h1>Makaleler</h1>
+  <ul>
+    {makaleler.map((makale) => (
+      <li>
+        <a href={`/makaleler/${makale.id}`}>{makale.data.title}</a>
+        <p>{makale.data.description}</p>
+      </li>
+    ))}
+  </ul>
 </Layout>
