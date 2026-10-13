@@ -4,6 +4,7 @@ backend:
   name: github
   repo: oznurcamalan/oznurcamalan.github.io
   branch: main
+  base_url: https://sveltia-cms-auth.ugurevrencamalan.workers.dev
 
 locale: tr
 
