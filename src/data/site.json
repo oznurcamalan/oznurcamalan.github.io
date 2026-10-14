@@ -13,6 +13,7 @@
       "aciklama": "Sizin için güvenli bir alanda birlikte danışmanlık sürecimize başlarız."
     }
   ],
+  "seoRandevu": "Ön görüşme ve randevu talebi",
   "ad": "Öznur Çamalan",
   "makalelerGiris": "Kendinizle ve çevrenizle kurduğunuz bağları güçlendirmeniz için hazırladığım rehber niteliğinde yazılar.",
   "foto": "/images/profil.jpeg",
@@ -20,6 +21,8 @@
   "yazarNotu": "Şefkatle, Farkındalıkla ve Şimdi'de Kalın\nPsk. Dan. Öznur Çamalan",
   "fotoAlt": "",
   "unvan": "Psikolojik Danışman",
+  "randevuAciklama": "Size uygun gün ve saati takvimden kendiniz seçersiniz.",
+  "onGorusmeAciklama": "Kısaca tanışır, ihtiyacınızı ve beklentinizi konuşuruz.",
   "calismaAlanlari": [
     "Bireysel Danışmanlık",
     "Kariyer Danışmanlığı",
@@ -41,6 +44,7 @@
   "randevuSure": "~45-50dk",
   "heroBaslik": "Kendinizi dinlemek için güvenli ve sakin bir alan.",
   "onGorusmeSure": "~15dk",
+  "hakkimdaCta": "Tanışmak için kısa bir ön görüşmeyle başlayabiliriz.",
   "hizmetler": [
     {
       "ikon": "kisi",
@@ -58,29 +62,25 @@
       "aciklama": "Evlilik kararı alan çiftlerin sağlıklı bir iletişim zemini oluşturmalarına, ortak beklentileri netleştirmelerine ve olası çatışmaları önceden yönetebilmelerine destek oluyorum."
     }
   ],
+  "seoHakkimda": "Öznur Çamalan hakkında",
+  "randevuLink": "oznurcamalan/oturum",
+  "randevuBaslik": "Görüşme planlamak birkaç adım sürer.",
+  "iletisimGiris": "Aşağıdaki seçeneklerden birini seçtiğinizde takvim açılır, gün ve saati siz belirlersiniz.",
+  "iletisimBaslik": "Hazır olduğunuzda, size uygun yoldan başlayın.",
+  "randevuGiris": "İlk kez iletişime geçiyorsanız ön görüşme talep edebilir, daha önce görüştüyseniz doğrudan randevu talep edebilirsiniz. Seçtiğinizde takvim açılır, gün ve saati siz belirlersiniz.",
   "telefon": "Lütfen Mail Üzerinden İletişime Geçiniz.",
+  "onGorusmeLink": "oznurcamalan/ongorusme",
   "hakkinda": [
-    "Çalışmalarımda bütüncül bir çerçevede Şema Terapi, Bilişsel Davranışçı Terapi (BDT) ve Hümanisttik Yaklaşım ilkelerini harmanlayarak ilerlemekteyim. Tüm bu yöntemleri Mindfulness (Bilinli Farkındalık) ilkeleriyle destekleyerek \"şimdi ve burada\" odaklı farkındalık çalışmaları yürütüyorum.",
+    "Çalışmalarımda bütüncül bir çerçevede Şema Terapi, Bilişsel Davranışçı Terapi (BDT) ve Hümanisttik Yaklaşım ilkelerini harmanlayarak ilerlemekteyim. Tüm bu yöntemleri Mindfulness (Bilinçli Farkındalık) ilkeleriyle destekleyerek \"şimdi ve burada\" odaklı farkındalık çalışmaları yürütüyorum.",
     "Bu yolculukta amacım; kendi sınırlarınızı keşfetmeniz, zorlayıcı duygularla baş etme becerilerinizi güçlendirmeniz ve kendinizle daha şefkatli bir ilişki kurmanıza rehberlik etmektir."
   ],
   "eposta": "camalanoznur@gmail.com",
+  "seoIletisim": "Öznur Çamalan ile iletişime geçin",
+  "anaSayfaCta": "Hazır olduğunuzda, ilk adımı birlikte atalım.",
   "slogan": "Duygularınızı özgürce ifade edebileceğiniz bu alanda, değişim yolculuğunuza birlikte başlayalım.",
   "yaklasim": [
     "Görüşmelerimiz, danışan gizliliği ve etik ilkeler çerçevesinde tamamen size özel olarak yapılandırılır. İlk oturumlarda mevcut ihtiyaçlarınızı ve hedeflerinizi birlikte değerlendirir, sürecin yol haritasını sizin hızınıza ve ihtiyaçlarınıza göre belirleriz. Oturumlarımız kayıt altına alınmamaktadır. Ön görüşmemizde \"Onam Formu\" ile bilgilendirilirsiniz ve onayınız dahilinde sürecimize başlarız.",
     "Oturumlarımız 45-50 dakika sürmekte olup genellikle haftada bir sıklıkla yürütülmektedir. Görüşmelerimizi online (görüntülü) platformlar üzerinden gerçekleştirmekteyiz."
   ],
-  "sehir": "Online",
-  "onGorusmeLink": "oznurcamalan/ongorusme",
-  "randevuLink": "oznurcamalan/oturum",
-  "onGorusmeAciklama": "Kısaca tanışır, ihtiyacınızı ve beklentinizi konuşuruz.",
-  "randevuAciklama": "Size uygun gün ve saati takvimden kendiniz seçersiniz.",
-  "anaSayfaCta": "Hazır olduğunuzda, ilk adımı birlikte atalım.",
-  "hakkimdaCta": "Tanışmak için kısa bir ön görüşmeyle başlayabiliriz.",
-  "iletisimBaslik": "Hazır olduğunuzda, size uygun yoldan başlayın.",
-  "iletisimGiris": "Aşağıdaki seçeneklerden birini seçtiğinizde takvim açılır, gün ve saati siz belirlersiniz.",
-  "randevuBaslik": "Görüşme planlamak birkaç adım sürer.",
-  "randevuGiris": "İlk kez iletişime geçiyorsanız ön görüşme talep edebilir, daha önce görüştüyseniz doğrudan randevu talep edebilirsiniz. Seçtiğinizde takvim açılır, gün ve saati siz belirlersiniz.",
-  "seoHakkimda": "Öznur Çamalan hakkında",
-  "seoIletisim": "Öznur Çamalan ile iletişime geçin",
-  "seoRandevu": "Ön görüşme ve randevu talebi"
+  "sehir": "Online"
 }
