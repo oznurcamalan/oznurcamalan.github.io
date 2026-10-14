@@ -1,0 +1,89 @@
+---
+// Ön görüşme ve randevu kartları (İletişim ve Randevu sayfalarında ortak)
+import RandevuButonlari from './RandevuButonlari.astro';
+import { site } from '../data/site';
+---
+
+<div class="kartlar">
+  <div class="kart pudra">
+    <span class="ust-not">İlk kez iletişime geçiyorsanız</span>
+    <h2>Ön Görüşme</h2>
+    <p>Kısaca tanışır, ihtiyacınızı ve beklentinizi konuşuruz. {site.onGorusmeSure}</p>
+    <RandevuButonlari goster="ongorusme" ok />
+  </div>
+  <div class="kart cerceveli">
+    <span class="ust-not">Daha önce görüştüyseniz</span>
+    <h2>Randevu</h2>
+    <p>Size uygun gün ve saati takvimden kendiniz seçersiniz. {site.randevuSure}</p>
+    <RandevuButonlari goster="randevu" ok />
+  </div>
+</div>
+<p class="kvkk-not">
+  Randevu formuna sağlık bilgisi ya da ayrıntılı kişisel bilgi yazmayınız. Kişisel verilerinizin işlenmesi
+  hakkında bilgi için <a href="/kvkk">KVKK Aydınlatma Metni</a>'ni okuyabilirsiniz.
+</p>
+
+<style>
+  .kartlar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+  .kart {
+    flex: 1 1 440px;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 44px;
+    border-radius: 32px;
+  }
+  .kart :global(.randevu-butonlari) {
+    margin-top: 8px;
+  }
+  .pudra {
+    background: var(--pudra);
+  }
+  .pudra .ust-not,
+  .pudra p {
+    color: var(--pudra-metin);
+  }
+  .cerceveli {
+    border: 1px solid var(--cizgi);
+    background: var(--kart);
+  }
+  .cerceveli .ust-not,
+  .cerceveli p {
+    color: var(--yumusak);
+  }
+  .ust-not {
+    font-size: 14px;
+  }
+  h2 {
+    font-weight: 400;
+    font-size: 34px;
+    line-height: 1.2;
+  }
+  .kvkk-not {
+    margin-top: 32px;
+    font-size: 14px;
+    color: var(--yumusak);
+  }
+  @media (max-width: 720px) {
+    .kartlar {
+      gap: 16px;
+    }
+    .kart {
+      flex-basis: 100%;
+      gap: 12px;
+      padding: 28px 24px;
+      border-radius: 24px;
+    }
+    h2 {
+      font-size: 30px;
+    }
+    .kvkk-not {
+      margin-top: 24px;
+    }
+  }
+</style>

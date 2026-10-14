@@ -4,23 +4,44 @@ import { site } from '../data/site';
 ---
 
 <Layout title="KVKK Aydınlatma Metni" description="Kişisel verilerin işlenmesi hakkında bilgilendirme">
-  <h1>KVKK Aydınlatma Metni</h1>
+  <article class="okuma">
+    <header class="okuma-baslik">
+      <span class="etiket">Kişisel veriler</span>
+      <h1>KVKK Aydınlatma Metni</h1>
+    </header>
+    <hr class="ayrac" />
+    <div class="prose">
+      <h2>1. Veri Sorumlusu</h2>
+      <p>{site.ad}, {site.unvan} — {site.eposta}</p>
 
-  <h2>1. Veri Sorumlusu</h2>
-  <p>{site.ad}, {site.unvan} — {site.eposta}</p>
+      <h2>2. İşlenen Kişisel Veriler</h2>
+      <p>[Randevu aşamasında alınan ad, e-posta, telefon vb. — hukuki incelemeden sonra doldurulacak]</p>
 
-  <h2>2. İşlenen Kişisel Veriler</h2>
-  <p>[Randevu aşamasında alınan ad, e-posta, telefon vb. — hukuki incelemeden sonra doldurulacak]</p>
+      <h2>3. Verilerin İşlenme Amacı</h2>
+      <p>[Randevu planlama ve iletişim — hukuki incelemeden sonra doldurulacak]</p>
 
-  <h2>3. Verilerin İşlenme Amacı</h2>
-  <p>[Randevu planlama ve iletişim — hukuki incelemeden sonra doldurulacak]</p>
+      <h2>4. Verilerin Aktarıldığı Taraflar</h2>
+      <p>[Randevu sistemi olarak Cal.com ve takvim için Google; yurt dışına aktarım — hukuki incelemeden sonra doldurulacak]</p>
 
-  <h2>4. Verilerin Aktarıldığı Taraflar</h2>
-  <p>[Randevu sistemi olarak Cal.com ve takvim için Google; yurt dışına aktarım — hukuki incelemeden sonra doldurulacak]</p>
+      <h2>5. Hukuki Sebep ve Saklama Süresi</h2>
+      <p>[Hukuki incelemeden sonra doldurulacak]</p>
 
-  <h2>5. Hukuki Sebep ve Saklama Süresi</h2>
-  <p>[Hukuki incelemeden sonra doldurulacak]</p>
-
-  <h2>6. İlgili Kişinin Hakları</h2>
-  <p>[KVKK madde 11 kapsamındaki haklar ve başvuru yolu — hukuki incelemeden sonra doldurulacak]</p>
+      <h2>6. İlgili Kişinin Hakları</h2>
+      <p>[KVKK madde 11 kapsamındaki haklar ve başvuru yolu — hukuki incelemeden sonra doldurulacak]</p>
+    </div>
+  </article>
 </Layout>
+
+<style>
+  .okuma {
+    padding-bottom: 104px;
+  }
+  .prose h2:first-child {
+    margin-top: 0;
+  }
+  @media (max-width: 720px) {
+    .okuma {
+      padding-bottom: var(--bolum-bosluk);
+    }
+  }
+</style>
