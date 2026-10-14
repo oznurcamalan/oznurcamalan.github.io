@@ -1,54 +1,73 @@
 {
-  "ad": "Ad Soyad",
-  "unvan": "Psikolojik Danışman",
-  "heroBaslik": "Kendinizi dinlemek için güvenli ve sakin bir alan.",
-  "slogan": "Kısa, sade bir tanıtım cümlesi.",
-  "eposta": "ornek@eposta.com",
-  "telefon": "0 (5xx) xxx xx xx",
-  "sehir": "Şehir",
-  "foto": "",
-  "fotoAlt": "",
-  "hizmetlerGiris": "[Hizmetlere genel bir giriş cümlesi.]",
-  "hizmetler": [
+  "surecAdimlari": [
     {
-      "baslik": "Bireysel Danışmanlık",
-      "aciklama": "Hizmetin iki üç cümlelik açıklaması.",
-      "ikon": "kisi"
+      "baslik": "Ön görüşme",
+      "aciklama": "Kısaca tanışır, ihtiyacınızı ve beklentinizi konuşuruz."
     },
     {
-      "baslik": "Çift Danışmanlığı",
-      "aciklama": "Hizmetin iki üç cümlelik açıklaması.",
-      "ikon": "cift"
+      "baslik": "Randevu",
+      "aciklama": "Size uygun gün ve saati takvimden kendiniz seçersiniz."
     },
     {
-      "baslik": "Online Görüşme",
-      "aciklama": "[Hizmetin iki üç cümlelik açıklaması.]",
-      "ikon": "video"
+      "baslik": "Görüşmeler",
+      "aciklama": "Sizin için güvenli bir alanda birlikte danışmanlık sürecimize başlarız."
     }
   ],
-  "surecAdimlari": [
-    { "baslik": "Ön görüşme", "aciklama": "Kısaca tanışır, ihtiyacınızı ve beklentinizi konuşuruz." },
-    { "baslik": "Randevu", "aciklama": "Size uygun gün ve saati takvimden kendiniz seçersiniz." },
-    { "baslik": "Görüşmeler", "aciklama": "Kendi hızınızda, güvenli bir alanda birlikte çalışırız." }
-  ],
-  "hakkinda": [
-    "[Danışmanın kendini tanıttığı birinci paragraf: nasıl bir yaklaşımla çalıştığı.]",
-    "[İkinci paragraf: danışanlarının neler bulmasını umduğu, görüşmelerin havası.]"
-  ],
-  "egitim": ["[Üniversite, bölüm, yıl]", "[Sertifika ya da ek eğitim, yıl]"],
+  "ad": "Öznur Çamalan",
+  "makalelerGiris": "Kendinizle ve çevrenizle kurduğunuz bağları güçlendirmeniz için hazırladığım rehber niteliğinde yazılar.",
+  "foto": "/images/whatsapp-image-2026-10-14-at-18.47.18.jpeg",
+  "hizmetlerGiris": "Yaşam yolculuğunuzda karşılaştığınız zorlukları anlamak, farkındalık kazanmak ve içsel dengenizi yeniden kurmak için sunduğum profesyonel danışmanlık hizmetlerim.",
+  "yazarNotu": "Şefkatle, Farkındalıkla ve Şimdi'de Kalın\nPsk. Dan. Öznur Çamalan",
+  "fotoAlt": "",
+  "unvan": "Psikolojik Danışman",
   "calismaAlanlari": [
-    "[Çalışma alanı]",
-    "[Çalışma alanı]",
-    "[Çalışma alanı]",
-    "[Çalışma alanı]",
-    "[Çalışma alanı]"
+    "Bireysel Danışmanlık",
+    "Kariyer Danışmanlığı",
+    "Sınır Yönetimi ve Kişisel Farkındalık",
+    "İlişki ve İletişim Problemleri",
+    "Stres ve Kaygı Yönetimi",
+    "Evlilik Öncesi Danışmanlık",
+    "Özgüven ve Öz Şefkat Çalışmaları",
+    "Bağlanma Problemleri"
   ],
+  "egitim": [
+    "TED Üniversitesi, Psikolojik Danışmanlık ve Rehberlik (Onur Derecesi), 2024",
+    "MMPI (Minnesota Çok Yönlü Kişilik Envanteri) Uygulayıcı Eğitimi – Türk PDR Derneği (2023)",
+    " Kısa Süreli Çözüm Odaklı Terapi Uygulayıcı Eğitimi – Türk PDR Derneği (2023",
+    "Oyun Terapisi Uygulayıcı Eğitimi – Türk PDR Derneği (2022)",
+    "Objektif Çocuk Testleri Uygulayıcı Eğitimi – Türk PDR Derneği (2022) ",
+    " Projektif Testler Uygulayıcı Eğitimi – Türk PDR Derneği (2022)"
+  ],
+  "randevuSure": "~45-50dk",
+  "heroBaslik": "Kendinizi dinlemek için güvenli ve sakin bir alan.",
+  "onGorusmeSure": "~15dk",
+  "hizmetler": [
+    {
+      "ikon": "kisi",
+      "baslik": "Bireysel Danışmanlık",
+      "aciklama": "Kişisel zorluklar, duygu düzenleme, sınır koyma ve kendinizi keşfetme süreçlerinizde size özel güvenli bir alan sunuyorum."
+    },
+    {
+      "ikon": "cift",
+      "baslik": "Çift Danışmanlığı",
+      "aciklama": "İlişkinizdeki iletişim engellerini aşmak, çatışmaları yapıcı bir şekilde yönetmek ve bağınızı güçlendirmek için rehberlik ediyorum."
+    },
+    {
+      "ikon": "cift",
+      "baslik": "Evlilik Öncesi Danışmanlığı",
+      "aciklama": "Evlilik kararı alan çiftlerin sağlıklı bir iletişim zemini oluşturmalarına, ortak beklentileri netleştirmelerine ve olası çatışmaları önceden yönetebilmelerine destek oluyorum."
+    }
+  ],
+  "telefon": "Lütfen Mail Üzerinden İletişime Geçiniz.",
+  "hakkinda": [
+    "Çalışmalarımda bütüncül bir çerçevede Şema Terapi, Bilişsel Davranışçı Terapi (BDT) ve Hümanisttik Yaklaşım ilkelerini harmanlayarak ilerlemekteyim. Tüm bu yöntemleri Mindfulness (Bilinli Farkındalık) ilkeleriyle destekleyerek \"şimdi ve burada\" odaklı farkındalık çalışmaları yürütüyorum.",
+    "Bu yolculukta amacım; kendi sınırlarınızı keşfetmeniz, zorlayıcı duygularla baş etme becerilerinizi güçlendirmeniz ve kendinizle daha şefkatli bir ilişki kurmanıza rehberlik etmektir."
+  ],
+  "eposta": "camalanoznur@gmail.com",
+  "slogan": "Duygularınızı özgürce ifade edebileceğiniz bu alanda, değişim yolculuğunuza birlikte başlayalım.",
   "yaklasim": [
-    "[Görüşmelerin nasıl işlediği, gizlilik ve güven konusundaki yaklaşım.]",
-    "[Görüşme süresi, sıklığı ve yüz yüze / online seçenekler hakkında kısa bilgi.]"
+    "Görüşmelerimiz, danışan gizliliği ve etik ilkeler çerçevesinde tamamen size özel olarak yapılandırılır. İlk oturumlarda mevcut ihtiyaçlarınızı ve hedeflerinizi birlikte değerlendirir, sürecin yol haritasını sizin hızınıza ve ihtiyaçlarınıza göre belirleriz. Oturumlarımız kayıt altına alınmamaktadır. Ön görüşmemizde \"Onam Formu\" ile bilgilendirilirsiniz ve onayınız dahilinde sürecimize başlarız.",
+    "Oturumlarımız 45-50 dakika sürmekte olup genellikle haftada bir sıklıkla yürütülmektedir. Görüşmelerimizi online (görüntülü) platformlar üzerinden gerçekleştirmekteyiz."
   ],
-  "makalelerGiris": "[Makalelerin ne hakkında olduğunu anlatan bir iki cümle.]",
-  "yazarNotu": "[Danışmanın yazılarla ilgili kısa notu ya da tanıtım cümlesi.]",
-  "onGorusmeSure": "[Süre bilgisi]",
-  "randevuSure": "[Süre bilgisi]"
+  "sehir": "Online"
 }
