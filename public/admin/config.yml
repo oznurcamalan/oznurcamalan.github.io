@@ -28,3 +28,83 @@ collections:
       - { label: Tarih, name: date, widget: datetime, format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
       - { label: Taslak, name: draft, widget: boolean, default: false }
       - { label: İçerik, name: body, widget: markdown }
+  - name: ayarlar
+    label: Site Bilgileri
+    description: Sitedeki ad, iletişim bilgileri, fotoğraf ve sayfa metinleri
+    files:
+      - name: site
+        label: Site Bilgileri
+        file: src/data/site.json
+        fields:
+          - { label: Ad Soyad, name: ad, widget: string }
+          - { label: Unvan, name: unvan, widget: string, hint: "Örnek: Psikolojik Danışman" }
+          - label: Fotoğraf
+            name: foto
+            widget: image
+            required: false
+            media_folder: /public/images
+            public_folder: /images
+            choose_url: false
+            hint: "Yaklaşık 800 piksel genişlikte, 300 KB altı yükleyin. Dikey (portre) bir fotoğraf en iyi sonucu verir. Boş bırakılırsa yer tutucu görünür."
+          - { label: Fotoğraf açıklaması, name: fotoAlt, widget: string, required: false, hint: "Görme engelli ziyaretçiler için kısa açıklama. Boş bırakılırsa ad ve unvan kullanılır." }
+
+          - { label: Ana sayfa başlığı, name: heroBaslik, widget: string, hint: "Ana sayfanın en üstündeki büyük başlık" }
+          - { label: Slogan (ana sayfa tanıtım metni), name: slogan, widget: text, hint: "Büyük başlığın altındaki kısa tanıtım. Arama motorlarında açıklama olarak da kullanılır." }
+
+          - { label: E-posta, name: eposta, widget: string }
+          - { label: Telefon, name: telefon, widget: string, hint: "Örnek: 0 (532) 123 45 67. Aranabilir bağlantı otomatik oluşturulur." }
+          - { label: Şehir, name: sehir, widget: string }
+
+          - { label: Hizmetler giriş cümlesi, name: hizmetlerGiris, widget: text, required: false }
+          - label: Hizmetler
+            name: hizmetler
+            widget: list
+            label_singular: Hizmet
+            summary: "{{fields.baslik}}"
+            fields:
+              - { label: Başlık, name: baslik, widget: string }
+              - { label: Açıklama, name: aciklama, widget: text }
+              - label: İkon
+                name: ikon
+                widget: select
+                default: kisi
+                options:
+                  - { label: Kişi (bireysel), value: kisi }
+                  - { label: İki kişi (çift / aile), value: cift }
+                  - { label: Video kamera (online), value: video }
+          - label: Süreç adımları
+            name: surecAdimlari
+            widget: list
+            label_singular: Adım
+            summary: "{{fields.baslik}}"
+            hint: "Ana sayfadaki “Süreç nasıl ilerler?” bölümü. Numaralar otomatik verilir."
+            fields:
+              - { label: Başlık, name: baslik, widget: string }
+              - { label: Açıklama, name: aciklama, widget: text }
+
+          - label: Hakkımda paragrafları
+            name: hakkinda
+            widget: list
+            label_singular: Paragraf
+            field: { label: Paragraf, name: paragraf, widget: text }
+          - label: Eğitim
+            name: egitim
+            widget: list
+            label_singular: Eğitim
+            hint: "Her satıra bir eğitim ya da sertifika. Örnek: Ankara Üniversitesi, PDR, 2018"
+            field: { label: Eğitim, name: egitim, widget: string }
+          - label: Çalışma alanları
+            name: calismaAlanlari
+            widget: list
+            label_singular: Çalışma alanı
+            field: { label: Çalışma alanı, name: alan, widget: string }
+          - label: Çalışma yaklaşımı paragrafları
+            name: yaklasim
+            widget: list
+            label_singular: Paragraf
+            field: { label: Paragraf, name: paragraf, widget: text }
+
+          - { label: Makaleler sayfası giriş metni, name: makalelerGiris, widget: text, required: false }
+          - { label: Makale sonu yazar notu, name: yazarNotu, widget: text, required: false, hint: "Her makalenin altındaki yazar kutusunda görünür" }
+          - { label: Ön görüşme süre bilgisi, name: onGorusmeSure, widget: string, required: false, hint: "Örnek: Yaklaşık 15 dakika, ücretsiz." }
+          - { label: Randevu süre bilgisi, name: randevuSure, widget: string, required: false, hint: "Örnek: Görüşmeler 50 dakika sürer." }
