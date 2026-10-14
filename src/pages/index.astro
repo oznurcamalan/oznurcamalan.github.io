@@ -25,40 +25,44 @@ const sonMakaleler = (await getCollection('makaleler', ({ data }) => !data.draft
     </div>
   </section>
 
-  <section class="bolum-koyu">
-    <div class="kapsayici bolum yigin">
-      <div class="bolum-baslik">
-        <h2>Hizmetler</h2>
-        <p class="ikincil">{site.hizmetlerGiris}</p>
-      </div>
-      <div class="hizmetler">
-        {site.hizmetler.map((hizmet) => (
-          <div class="hizmet">
-            <div class="hizmet-ikon">
-              <Ikon ad={hizmet.ikon} />
+  {site.hizmetler.length > 0 && (
+    <section class="bolum-koyu">
+      <div class="kapsayici bolum yigin">
+        <div class="bolum-baslik">
+          <h2>Hizmetler</h2>
+          {site.hizmetlerGiris && <p class="ikincil">{site.hizmetlerGiris}</p>}
+        </div>
+        <div class="hizmetler">
+          {site.hizmetler.map((hizmet) => (
+            <div class="hizmet">
+              <div class="hizmet-ikon">
+                <Ikon ad={hizmet.ikon} />
+              </div>
+              <h3>{hizmet.baslik}</h3>
+              <p>{hizmet.aciklama}</p>
             </div>
-            <h3>{hizmet.baslik}</h3>
-            <p>{hizmet.aciklama}</p>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
+  )}
 
-  <section class="kapsayici bolum yigin">
-    <h2>Süreç nasıl ilerler?</h2>
-    <ol class="adimlar">
-      {site.surecAdimlari.map((adim, i) => (
-        <li class="adim">
-          <span class="adim-no" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
-          <div class="adim-metin">
-            <h3>{adim.baslik}</h3>
-            <p class="ikincil">{adim.aciklama}</p>
-          </div>
-        </li>
-      ))}
-    </ol>
-  </section>
+  {site.surecAdimlari.length > 0 && (
+    <section class="kapsayici bolum yigin">
+      <h2>Süreç nasıl ilerler?</h2>
+      <ol class="adimlar">
+        {site.surecAdimlari.map((adim, i) => (
+          <li class="adim">
+            <span class="adim-no" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+            <div class="adim-metin">
+              <h3>{adim.baslik}</h3>
+              <p class="ikincil">{adim.aciklama}</p>
+            </div>
+          </li>
+        ))}
+      </ol>
+    </section>
+  )}
 
   {sonMakaleler.length > 0 && (
     <section class="kapsayici son-makaleler yigin">

@@ -18,31 +18,39 @@ import { site } from '../data/site';
     </div>
   </section>
 
-  <section class="bolum-koyu">
-    <div class="kapsayici iki-sutun">
-      <div class="sutun">
-        <h2>Eğitim</h2>
-        <ul class="egitim">
-          {site.egitim.map((satir) => <li>{satir}</li>)}
-        </ul>
+  {(site.egitim.length > 0 || site.calismaAlanlari.length > 0) && (
+    <section class="bolum-koyu">
+      <div class="kapsayici iki-sutun">
+        {site.egitim.length > 0 && (
+          <div class="sutun">
+            <h2>Eğitim</h2>
+            <ul class="egitim">
+              {site.egitim.map((satir) => <li>{satir}</li>)}
+            </ul>
+          </div>
+        )}
+        {site.calismaAlanlari.length > 0 && (
+          <div class="sutun">
+            <h2>Çalışma alanları</h2>
+            <ul class="alanlar">
+              {site.calismaAlanlari.map((alan) => <li>{alan}</li>)}
+            </ul>
+          </div>
+        )}
       </div>
-      <div class="sutun">
-        <h2>Çalışma alanları</h2>
-        <ul class="alanlar">
-          {site.calismaAlanlari.map((alan) => <li>{alan}</li>)}
-        </ul>
-      </div>
-    </div>
-  </section>
+    </section>
+  )}
 
-  <section class="kapsayici bolum yaklasim">
-    <div class="yaklasim-baslik">
-      <h2>Çalışma yaklaşımım</h2>
-    </div>
-    <div class="yaklasim-metin">
-      {site.yaklasim.map((paragraf) => <p>{paragraf}</p>)}
-    </div>
-  </section>
+  {site.yaklasim.length > 0 && (
+    <section class="kapsayici bolum yaklasim">
+      <div class="yaklasim-baslik">
+        <h2>Çalışma yaklaşımım</h2>
+      </div>
+      <div class="yaklasim-metin">
+        {site.yaklasim.map((paragraf) => <p>{paragraf}</p>)}
+      </div>
+    </section>
+  )}
 
   <section class="kapsayici cta-alan">
     <div class="cta-bandi">

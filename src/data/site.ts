@@ -1,70 +1,60 @@
-// Fotoğraf yolu profil.json içinde tutulur; ileride admin panelinden güncellenebilsin diye ayrı dosyada.
-import profil from './profil.json';
+// Site bilgileri site.json içinde tutulur ve admin panelinden (Site Bilgileri) düzenlenir.
+// Bu dosya yalnızca o veriyi okur, eksik alanlara güvenli varsayılan verir ve telefon bağlantısını üretir.
+import veri from './site.json';
 
 export type IkonAdi = 'kisi' | 'cift' | 'video';
 
+type BaslikAciklama = { baslik: string; aciklama: string };
+type Hizmet = BaslikAciklama & { ikon: IkonAdi };
+
+const ikonlar: IkonAdi[] = ['kisi', 'cift', 'video'];
+const metin = (deger: unknown) => (typeof deger === 'string' ? deger.trim() : '');
+const liste = <T>(deger: unknown): T[] => (Array.isArray(deger) ? (deger as T[]) : []);
+const yazili = (dizi: string[]) => dizi.map(metin).filter(Boolean);
+
+// '0 (532) 123 45 67' -> '+905321234567'
+function telefonBaglantisi(telefon: string) {
+  const rakamlar = telefon.replace(/\D/g, '');
+  if (rakamlar.startsWith('90')) return `+${rakamlar}`;
+  if (rakamlar.startsWith('0')) return `+90${rakamlar.slice(1)}`;
+  return rakamlar ? `+90${rakamlar}` : '';
+}
+
+const telefon = metin(veri.telefon);
+
 export const site = {
-  ad: 'Ad Soyad',
-  unvan: 'Psikolojik Danışman',
-  // Ana sayfa hero başlığı (örnek metin, değiştirilebilir)
-  heroBaslik: 'Kendinizi dinlemek için güvenli ve sakin bir alan.',
-  // Hero alt metni
-  slogan: 'Kısa, sade bir tanıtım cümlesi.',
-  eposta: 'ornek@eposta.com',
-  telefon: '0 (5xx) xxx xx xx',
-  telefonLink: '+905xxxxxxxxx',
-  sehir: 'Şehir',
+  ad: metin(veri.ad),
+  unvan: metin(veri.unvan),
+  heroBaslik: metin(veri.heroBaslik),
+  slogan: metin(veri.slogan),
+  eposta: metin(veri.eposta),
+  telefon,
+  telefonLink: telefonBaglantisi(telefon),
+  sehir: metin(veri.sehir),
 
-  // Fotoğraf: boşsa kemer biçimli yer tutucu gösterilir. Örnek: '/images/danisman.jpg'
-  foto: profil.foto,
-  fotoAlt: profil.fotoAlt,
+  // Boşsa kemer biçimli yer tutucu gösterilir. Örnek: '/images/danisman.jpg'
+  foto: metin(veri.foto),
+  fotoAlt: metin(veri.fotoAlt),
 
-  hizmetlerGiris: '[Hizmetlere genel bir giriş cümlesi.]',
-  hizmetler: [
-    {
-      baslik: 'Bireysel Danışmanlık',
-      aciklama: 'Hizmetin iki üç cümlelik açıklaması.',
-      ikon: 'kisi' as IkonAdi,
-    },
-    {
-      baslik: 'Çift Danışmanlığı',
-      aciklama: 'Hizmetin iki üç cümlelik açıklaması.',
-      ikon: 'cift' as IkonAdi,
-    },
-    {
-      baslik: 'Online Görüşme',
-      aciklama: '[Hizmetin iki üç cümlelik açıklaması.]',
-      ikon: 'video' as IkonAdi,
-    },
-  ],
+  hizmetlerGiris: metin(veri.hizmetlerGiris),
+  hizmetler: liste<Partial<Hizmet>>(veri.hizmetler).map(
+    (h): Hizmet => ({
+      baslik: metin(h.baslik),
+      aciklama: metin(h.aciklama),
+      ikon: ikonlar.includes(h.ikon as IkonAdi) ? (h.ikon as IkonAdi) : 'kisi',
+    }),
+  ),
+  surecAdimlari: liste<Partial<BaslikAciklama>>(veri.surecAdimlari).map(
+    (a): BaslikAciklama => ({ baslik: metin(a.baslik), aciklama: metin(a.aciklama) }),
+  ),
 
-  surecAdimlari: [
-    { baslik: 'Ön görüşme', aciklama: 'Kısaca tanışır, ihtiyacınızı ve beklentinizi konuşuruz.' },
-    { baslik: 'Randevu', aciklama: 'Size uygun gün ve saati takvimden kendiniz seçersiniz.' },
-    { baslik: 'Görüşmeler', aciklama: 'Kendi hızınızda, güvenli bir alanda birlikte çalışırız.' },
-  ],
+  hakkinda: yazili(liste<string>(veri.hakkinda)),
+  egitim: yazili(liste<string>(veri.egitim)),
+  calismaAlanlari: yazili(liste<string>(veri.calismaAlanlari)),
+  yaklasim: yazili(liste<string>(veri.yaklasim)),
 
-  hakkinda: [
-    '[Danışmanın kendini tanıttığı birinci paragraf: nasıl bir yaklaşımla çalıştığı.]',
-    '[İkinci paragraf: danışanlarının neler bulmasını umduğu, görüşmelerin havası.]',
-  ],
-  egitim: ['[Üniversite, bölüm, yıl]', '[Sertifika ya da ek eğitim, yıl]'],
-  calismaAlanlari: [
-    '[Çalışma alanı]',
-    '[Çalışma alanı]',
-    '[Çalışma alanı]',
-    '[Çalışma alanı]',
-    '[Çalışma alanı]',
-  ],
-  yaklasim: [
-    '[Görüşmelerin nasıl işlediği, gizlilik ve güven konusundaki yaklaşım.]',
-    '[Görüşme süresi, sıklığı ve yüz yüze / online seçenekler hakkında kısa bilgi.]',
-  ],
-
-  makalelerGiris: '[Makalelerin ne hakkında olduğunu anlatan bir iki cümle.]',
-  // Makale sonundaki yazar kutusunda görünen kısa not
-  yazarNotu: '[Danışmanın yazılarla ilgili kısa notu ya da tanıtım cümlesi.]',
-
-  onGorusmeSure: '[Süre bilgisi]',
-  randevuSure: '[Süre bilgisi]',
+  makalelerGiris: metin(veri.makalelerGiris),
+  yazarNotu: metin(veri.yazarNotu),
+  onGorusmeSure: metin(veri.onGorusmeSure),
+  randevuSure: metin(veri.randevuSure),
 };
