@@ -16,10 +16,12 @@ const { title, description = `${site.unvan} ${site.ad}` } = Astro.props;
 const tamBaslik =
   title === 'Ana Sayfa' ? `${site.ad} | ${site.unvan}` : `${title} | ${site.ad}`;
 
-// Sayfalar klasör olarak üretildiği için (/hakkimda/) adresler her zaman / ile biter; site haritasıyla aynı biçim.
 const hataSayfasi = /^\/404(\.html|\/)?$/.test(Astro.url.pathname);
 const yol = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : `${Astro.url.pathname}/`;
 const kanonik = new URL(yol, Astro.site).href;
+
+const paylasimGorseli = new URL('/images/paylasim.png', Astro.site).href;
+const paylasimAciklama = `${site.ad}, ${site.unvan}`;
 ---
 
 <!doctype html>
@@ -30,7 +32,9 @@ const kanonik = new URL(yol, Astro.site).href;
     <meta name="description" content={description} />
     <meta name="robots" content="noindex, nofollow" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="theme-color" content="#F6F0E7" />
     <title>{tamBaslik}</title>
     {!hataSayfasi && <link rel="canonical" href={kanonik} />}
 
@@ -40,9 +44,16 @@ const kanonik = new URL(yol, Astro.site).href;
     {!hataSayfasi && <meta property="og:url" content={kanonik} />}
     <meta property="og:locale" content="tr_TR" />
     <meta property="og:site_name" content={site.ad} />
-    <meta name="twitter:card" content="summary" />
+    <meta property="og:image" content={paylasimGorseli} />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={paylasimAciklama} />
+    <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={tamBaslik} />
     <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={paylasimGorseli} />
+    <meta name="twitter:image:alt" content={paylasimAciklama} />
   </head>
   <body>
     <a href="#icerik" class="atla">İçeriğe geç</a>

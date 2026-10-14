@@ -1,5 +1,4 @@
 ---
-// Ön görüşme ve randevu kartları (İletişim ve Randevu sayfalarında ortak)
 import RandevuButonlari from './RandevuButonlari.astro';
 import { site } from '../data/site';
 ---
@@ -8,13 +7,13 @@ import { site } from '../data/site';
   <div class="kart pudra">
     <span class="ust-not">İlk kez iletişime geçiyorsanız</span>
     <h2>Ön Görüşme</h2>
-    <p>Kısaca tanışır, ihtiyacınızı ve beklentinizi konuşuruz. {site.onGorusmeSure}</p>
+    <p>{site.onGorusmeAciklama} {site.onGorusmeSure}</p>
     <RandevuButonlari goster="ongorusme" ok />
   </div>
   <div class="kart cerceveli">
     <span class="ust-not">Daha önce görüştüyseniz</span>
     <h2>Randevu</h2>
-    <p>Size uygun gün ve saati takvimden kendiniz seçersiniz. {site.randevuSure}</p>
+    <p>{site.randevuAciklama} {site.randevuSure}</p>
     <RandevuButonlari goster="randevu" ok />
   </div>
 </div>

@@ -1,10 +1,8 @@
 ---
-// İki Cal.com butonu: Ön Görüşme (30min) ve Randevu (15min).
-// Cal başlatma kodu Layout.astro içindeki CalScript.astro'dadır.
+import { site } from '../data/site';
 import Ikon from './Ikon.astro';
 
 interface Props {
-  // 'ikisi' (varsayılan), yalnızca 'ongorusme' ya da yalnızca 'randevu'
   goster?: 'ikisi' | 'ongorusme' | 'randevu';
   hizala?: 'sol' | 'orta';
   ok?: boolean;
@@ -18,7 +16,7 @@ const { goster = 'ikisi', hizala = 'sol', ok = false } = Astro.props;
     <button
       type="button"
       class="btn btn-birincil"
-      data-cal-link="oznurcamalan/ongorusme"
+      data-cal-link={site.onGorusmeLink}
       data-cal-namespace="30min"
       data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
     >
@@ -31,7 +29,7 @@ const { goster = 'ikisi', hizala = 'sol', ok = false } = Astro.props;
     <button
       type="button"
       class="btn btn-cerceveli"
-      data-cal-link="oznurcamalan/oturum"
+      data-cal-link={site.randevuLink}
       data-cal-namespace="15min"
       data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
     >

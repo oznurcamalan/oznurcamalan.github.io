@@ -1,16 +1,14 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import RandevuKartlari from '../components/RandevuKartlari.astro';
+import { site } from '../data/site';
 ---
 
-<Layout title="Randevu" description="Ön görüşme ve randevu talebi">
+<Layout title="Randevu" description={site.seoRandevu || 'Ön görüşme ve randevu talebi'}>
   <section class="kapsayici sayfa-baslik">
     <span class="etiket">Randevu</span>
-    <h1>Görüşme planlamak birkaç adım sürer.</h1>
-    <p class="giris">
-      İlk kez iletişime geçiyorsanız ön görüşme talep edebilir, daha önce görüştüyseniz doğrudan randevu
-      talep edebilirsiniz. Seçtiğinizde takvim açılır, gün ve saati siz belirlersiniz.
-    </p>
+    <h1>{site.randevuBaslik}</h1>
+    {site.randevuGiris && <p class="giris">{site.randevuGiris}</p>}
   </section>
 
   <section class="kapsayici secenekler">

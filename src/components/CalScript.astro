@@ -1,8 +1,5 @@
 ---
-// Cal.com başlatma kodu. Layout.astro içinde sayfa başına bir kez çağrılır.
-// Cal.com betiği sayfa açılışında değil, bir randevu düğmesine ilk tıklamada yüklenir (KVKK: ziyaretçi
-// tıklamadan Cal.com'a istek gitmez). İlk tıklamada popup, tıklanan düğmenin data-cal-* değerleriyle açılır;
-// sonraki tıklamaları Cal.com'un kendi betiği data-cal-link üzerinden karşılar.
+// KVKK: Cal.com betiği ziyaretçi bir randevu düğmesine ilk kez tıklayana kadar yüklenmez.
 ---
 
 <script is:inline>
@@ -31,7 +28,6 @@
       try {
         ayar = JSON.parse(dugme.getAttribute('data-cal-config') || '{}');
       } catch (hata) {}
-      // Betik henüz yüklenmediği için komut kuyruğa alınır, yüklenince popup açılır.
       var api = ad && Cal.ns[ad] ? Cal.ns[ad] : Cal;
       api('modal', { calLink: dugme.getAttribute('data-cal-link'), config: ayar });
     }

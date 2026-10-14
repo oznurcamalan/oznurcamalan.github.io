@@ -5,11 +5,11 @@ import Ikon from '../components/Ikon.astro';
 import { site } from '../data/site';
 ---
 
-<Layout title="İletişim" description={`${site.ad} ile iletişime geçin`}>
+<Layout title="İletişim" description={site.seoIletisim || `${site.ad} ile iletişime geçin`}>
   <section class="kapsayici sayfa-baslik">
     <span class="etiket">İletişim ve Randevu</span>
-    <h1>Hazır olduğunuzda, size uygun yoldan başlayın.</h1>
-    <p class="giris">Aşağıdaki seçeneklerden birini seçtiğinizde takvim açılır, gün ve saati siz belirlersiniz.</p>
+    <h1>{site.iletisimBaslik}</h1>
+    {site.iletisimGiris && <p class="giris">{site.iletisimGiris}</p>}
   </section>
 
   <section class="kapsayici secenekler">

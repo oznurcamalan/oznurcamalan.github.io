@@ -32,7 +32,7 @@ collections:
       - { label: İçerik, name: body, widget: markdown }
   - name: ayarlar
     label: Site Bilgileri
-    description: Sitedeki ad, iletişim bilgileri, fotoğraf ve sayfa metinleri
+    description: Sitedeki ad, iletişim bilgileri, fotoğraf, sayfa metinleri ve KVKK aydınlatma metni
     files:
       - name: site
         label: Site Bilgileri
@@ -108,5 +108,30 @@ collections:
 
           - { label: Makaleler sayfası giriş metni, name: makalelerGiris, widget: text, required: false }
           - { label: Makale sonu yazar notu, name: yazarNotu, widget: text, required: false, hint: "Her makalenin altındaki yazar kutusunda görünür" }
+          - { label: Ön görüşme Cal.com bağlantısı, name: onGorusmeLink, widget: string, hint: "Cal.com'daki etkinlik adresi. Örnek: oznurcamalan/ongorusme ya da https://cal.com/oznurcamalan/ongorusme. Geçersiz bir değer girilirse varsayılan bağlantı kullanılır." }
+          - { label: Ön görüşme açıklaması, name: onGorusmeAciklama, widget: text, hint: "İletişim ve Randevu sayfalarındaki Ön Görüşme kartında görünür" }
           - { label: Ön görüşme süre bilgisi, name: onGorusmeSure, widget: string, required: false, hint: "Örnek: Yaklaşık 15 dakika, ücretsiz." }
+          - { label: Randevu Cal.com bağlantısı, name: randevuLink, widget: string, hint: "Cal.com'daki etkinlik adresi. Örnek: oznurcamalan/oturum" }
+          - { label: Randevu açıklaması, name: randevuAciklama, widget: text, hint: "İletişim ve Randevu sayfalarındaki Randevu kartında görünür" }
           - { label: Randevu süre bilgisi, name: randevuSure, widget: string, required: false, hint: "Örnek: Görüşmeler 50 dakika sürer." }
+
+          - { label: Ana sayfa alt çağrı başlığı, name: anaSayfaCta, widget: string, hint: "Ana sayfanın en altındaki pembe banttaki başlık" }
+          - { label: Hakkımda alt çağrı başlığı, name: hakkimdaCta, widget: string, hint: "Hakkımda sayfasının en altındaki pembe banttaki başlık" }
+          - { label: İletişim sayfası başlığı, name: iletisimBaslik, widget: string }
+          - { label: İletişim sayfası giriş metni, name: iletisimGiris, widget: text, required: false }
+          - { label: Randevu sayfası başlığı, name: randevuBaslik, widget: string }
+          - { label: Randevu sayfası giriş metni, name: randevuGiris, widget: text, required: false }
+
+          - { label: "Google açıklaması: Hakkımda", name: seoHakkimda, widget: text, required: false, hint: "Arama sonuçlarında ve paylaşımlarda sayfa başlığının altında görünen kısa açıklama (150-160 karakter)" }
+          - { label: "Google açıklaması: İletişim", name: seoIletisim, widget: text, required: false }
+          - { label: "Google açıklaması: Randevu", name: seoRandevu, widget: text, required: false }
+
+      - name: kvkk
+        label: KVKK Aydınlatma Metni
+        file: src/data/kvkk.md
+        fields:
+          - { label: Giriş paragrafı, name: giris, widget: text }
+          - { label: Adres, name: adres, widget: string, required: false, hint: "1. Veri Sorumlusunun Kimliği bölümünde görünür. Ad, unvan ve e-posta Site Bilgileri'nden otomatik gelir." }
+          - { label: KEP adresi, name: kep, widget: string, required: false, hint: "Yoksa boş bırakın; satır gösterilmez." }
+          - { label: Son güncelleme tarihi, name: guncelleme, widget: datetime, format: "YYYY-MM-DD", date_format: "DD.MM.YYYY", time_format: false, hint: "Metni her değiştirdiğinizde bu tarihi de güncelleyin." }
+          - { label: Metin (2. bölümden itibaren), name: body, widget: markdown, hint: "Metinde {eposta} yazdığınız yere Site Bilgileri'ndeki e-posta adresi otomatik gelir." }

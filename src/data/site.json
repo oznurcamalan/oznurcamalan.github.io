@@ -15,7 +15,7 @@
   ],
   "ad": "Öznur Çamalan",
   "makalelerGiris": "Kendinizle ve çevrenizle kurduğunuz bağları güçlendirmeniz için hazırladığım rehber niteliğinde yazılar.",
-  "foto": "/images/whatsapp-image-2026-10-14-at-18.47.18.jpeg",
+  "foto": "/images/profil.jpeg",
   "hizmetlerGiris": "Yaşam yolculuğunuzda karşılaştığınız zorlukları anlamak, farkındalık kazanmak ve içsel dengenizi yeniden kurmak için sunduğum profesyonel danışmanlık hizmetlerim.",
   "yazarNotu": "Şefkatle, Farkındalıkla ve Şimdi'de Kalın\nPsk. Dan. Öznur Çamalan",
   "fotoAlt": "",
@@ -69,5 +69,18 @@
     "Görüşmelerimiz, danışan gizliliği ve etik ilkeler çerçevesinde tamamen size özel olarak yapılandırılır. İlk oturumlarda mevcut ihtiyaçlarınızı ve hedeflerinizi birlikte değerlendirir, sürecin yol haritasını sizin hızınıza ve ihtiyaçlarınıza göre belirleriz. Oturumlarımız kayıt altına alınmamaktadır. Ön görüşmemizde \"Onam Formu\" ile bilgilendirilirsiniz ve onayınız dahilinde sürecimize başlarız.",
     "Oturumlarımız 45-50 dakika sürmekte olup genellikle haftada bir sıklıkla yürütülmektedir. Görüşmelerimizi online (görüntülü) platformlar üzerinden gerçekleştirmekteyiz."
   ],
-  "sehir": "Online"
+  "sehir": "Online",
+  "onGorusmeLink": "oznurcamalan/ongorusme",
+  "randevuLink": "oznurcamalan/oturum",
+  "onGorusmeAciklama": "Kısaca tanışır, ihtiyacınızı ve beklentinizi konuşuruz.",
+  "randevuAciklama": "Size uygun gün ve saati takvimden kendiniz seçersiniz.",
+  "anaSayfaCta": "Hazır olduğunuzda, ilk adımı birlikte atalım.",
+  "hakkimdaCta": "Tanışmak için kısa bir ön görüşmeyle başlayabiliriz.",
+  "iletisimBaslik": "Hazır olduğunuzda, size uygun yoldan başlayın.",
+  "iletisimGiris": "Aşağıdaki seçeneklerden birini seçtiğinizde takvim açılır, gün ve saati siz belirlersiniz.",
+  "randevuBaslik": "Görüşme planlamak birkaç adım sürer.",
+  "randevuGiris": "İlk kez iletişime geçiyorsanız ön görüşme talep edebilir, daha önce görüştüyseniz doğrudan randevu talep edebilirsiniz. Seçtiğinizde takvim açılır, gün ve saati siz belirlersiniz.",
+  "seoHakkimda": "Öznur Çamalan hakkında",
+  "seoIletisim": "Öznur Çamalan ile iletişime geçin",
+  "seoRandevu": "Ön görüşme ve randevu talebi"
 }
