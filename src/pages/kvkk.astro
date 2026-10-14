@@ -1,6 +1,15 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { site } from '../data/site';
+
+// Köşeli parantezli alanlar danışmanın gerçek bilgileriyle doldurulacak.
+// Metnin tamamı yayından önce bir hukukçu ya da KVKK danışmanı tarafından incelenmelidir.
+const bilgi = {
+  adres: '[Posta adresi]',
+  kep: '[KEP adresi, varsa]',
+  saklama: '1 Yıl',
+  guncelleme: '[15.10.2026]',
+};
 ---
 
 <Layout title="KVKK Aydınlatma Metni" description="Kişisel verilerin işlenmesi hakkında bilgilendirme">
@@ -11,23 +20,137 @@ import { site } from '../data/site';
     </header>
     <hr class="ayrac" />
     <div class="prose">
-      <h2>1. Veri Sorumlusu</h2>
-      <p>{site.ad}, {site.unvan} — {site.eposta}</p>
+      <p>
+        Bu metin, 6698 sayılı Kişisel Verilerin Korunması Kanunu'nun ("KVKK") 10. maddesi ve
+        Aydınlatma Yükümlülüğünün Yerine Getirilmesinde Uyulacak Usul ve Esaslar Hakkında Tebliğ
+        kapsamında, web sitemiz üzerinden randevu talep eden ve bizimle iletişime geçen kişileri
+        bilgilendirmek amacıyla hazırlanmıştır.
+      </p>
+
+      <h2>1. Veri Sorumlusunun Kimliği</h2>
+      <ul>
+        <li>Veri sorumlusu: {site.ad}, {site.unvan}</li>
+        <li>E-posta: {site.eposta}</li>
+      </ul>
 
       <h2>2. İşlenen Kişisel Veriler</h2>
-      <p>[Randevu aşamasında alınan ad, e-posta, telefon vb. — hukuki incelemeden sonra doldurulacak]</p>
+      <ul>
+        <li><strong>Kimlik bilgileri:</strong> ad, soyad</li>
+        <li><strong>İletişim bilgileri:</strong> e-posta adresi, telefon numarası</li>
+        <li>
+          <strong>Randevu bilgileri:</strong> randevunun tarihi ve saati, saat dilimi, görüşme türü
+          (ön görüşme ya da randevu), görüşme şekli (çevrimiçi ya da yüz yüze), iptal ve erteleme kayıtları
+        </li>
+        <li>
+          <strong>İşlem güvenliği bilgileri:</strong> IP adresi, tarayıcı ve cihaz türü gibi teknik
+          bağlantı kayıtları
+        </li>
+        <li>
+          <strong>Doğrudan iletişim:</strong> bize e-posta ya da telefonla ilettiğiniz bilgiler
+        </li>
+      </ul>
+      <p>
+        Randevu formuna sağlık bilgisi, şikâyet ya da ayrıntılı kişisel bilgi yazmamanızı rica ederiz.
+        Bu tür bilgileri, görüşme sırasında paylaşabilirsiniz.
+      </p>
 
-      <h2>3. Verilerin İşlenme Amacı</h2>
-      <p>[Randevu planlama ve iletişim — hukuki incelemeden sonra doldurulacak]</p>
+      <h2>3. Kişisel Verilerin İşlenme Amaçları</h2>
+      <ul>
+        <li>Randevu talebinizi almak, planlamak ve yönetmek</li>
+        <li>Görüşme bağlantısı, yer ve saat bilgisini size iletmek</li>
+        <li>Hatırlatma, iptal ve erteleme işlemlerini yürütmek</li>
+        <li>Sorularınıza ve taleplerinize yanıt vermek</li>
+        <li>Hukuki yükümlülüklerimizi yerine getirmek</li>
+        <li>Bilgi güvenliğini sağlamak</li>
+      </ul>
 
-      <h2>4. Verilerin Aktarıldığı Taraflar</h2>
-      <p>[Randevu sistemi olarak Cal.com ve takvim için Google; yurt dışına aktarım — hukuki incelemeden sonra doldurulacak]</p>
+      <h2>4. Kişisel Verilerin Toplanma Yöntemi ve Hukuki Sebebi</h2>
+      <p>
+        Verileriniz, web sitemizdeki randevu penceresinde doldurduğunuz form ile e-posta ve telefon
+        yoluyla, tamamen ya da kısmen otomatik yöntemlerle, elektronik ortamda toplanır.
+      </p>
+      <p>
+        Verileriniz, KVKK'nın 5. maddesinin 2. fıkrasındaki şu hukuki sebeplere dayanılarak işlenir:
+        sözleşmenin kurulması veya ifasıyla doğrudan ilgili olması (c), hukuki yükümlülüğün yerine
+        getirilmesi (ç) ve ilgili kişinin temel hak ve özgürlüklerine zarar vermemek kaydıyla veri
+        sorumlusunun meşru menfaati (f).
+      </p>
 
-      <h2>5. Hukuki Sebep ve Saklama Süresi</h2>
-      <p>[Hukuki incelemeden sonra doldurulacak]</p>
+      <h2>5. Kişisel Verilerin Aktarıldığı Taraflar ve Yurt Dışına Aktarım</h2>
+      <p>Verileriniz, yukarıdaki amaçlarla ve gerekli olduğu ölçüde aşağıdaki taraflarla paylaşılır:</p>
+      <ul>
+        <li>
+          <strong>Cal.com:</strong> randevu planlama ve çevrimiçi görüşme hizmeti. Randevu penceresi ve randevu kayıtları bu
+          hizmet üzerinden yürütülür.
+        </li>
+        <li>
+          <strong>Google:</strong> randevuların kaydedildiği takvim hizmeti.
+        </li>
+        <li>
+          <strong>GitHub (GitHub Pages):</strong> web sitesinin barındırma hizmeti. Siteyi ziyaret
+          ettiğinizde IP adresi gibi bağlantı bilgileri bu hizmet tarafından teknik nedenlerle işlenebilir.
+        </li>
+        <li>
+          <strong>Yetkili kamu kurum ve kuruluşları:</strong> yürürlükteki mevzuat gereği talep edilmesi
+          halinde.
+        </li>
+      </ul>
+      <p>
+        Bu hizmet sağlayıcıların sunucuları yurt dışında bulunabileceğinden verileriniz Türkiye dışına
+        aktarılabilir. Aktarım, KVKK'nın 9. maddesinde öngörülen şartlara uygun olarak 
+        yapılır. Verileriniz reklam ya da pazarlama amacıyla kullanılmaz ve üçüncü kişilere satılmaz.
+      </p>
 
-      <h2>6. İlgili Kişinin Hakları</h2>
-      <p>[KVKK madde 11 kapsamındaki haklar ve başvuru yolu — hukuki incelemeden sonra doldurulacak]</p>
+      <h2>6. Kişisel Verilerin Saklama Süresi</h2>
+      <p>
+        Verileriniz, işleme amacının gerektirdiği süre boyunca ve yasal saklama yükümlülüklerimiz
+        kapsamında saklanır. Planlanan saklama süresi: {bilgi.saklama}. Süre sonunda verileriniz silinir,
+        yok edilir ya da anonim hale getirilir.
+      </p>
+
+      <h2>7. Veri Güvenliği</h2>
+      <p>
+        Verilerinizin güvenliği için makul teknik ve idari tedbirler alınır. Hesaplara ve kayıtlara
+        erişim yetkili kişilerle sınırlıdır.
+      </p>
+
+      <h2>8. Web Sitesi Ziyaretlerine İlişkin Bilgi</h2>
+      <p>
+        Web sitemizde analiz, reklam ya da takip amaçlı bir araç kullanılmaz. Randevu penceresi Cal.com
+        tarafından sağlanan bir yazılımla çalışır. Bu yazılım sayfa yüklendiğinde Cal.com sunucularına
+        bağlanabileceğinden, randevu almasanız bile IP adresiniz gibi bağlantı bilgileriniz Cal.com'a
+        iletilebilir. Randevu penceresi açıldığında Cal.com, kendi teknik çerezlerini ya da benzeri
+        teknolojileri kullanabilir.
+      </p>
+
+      <h2>9. İlgili Kişinin Hakları</h2>
+      <p>KVKK'nın 11. maddesi uyarınca, veri sorumlusuna başvurarak şu haklarınızı kullanabilirsiniz:</p>
+      <ul>
+        <li>Kişisel verilerinizin işlenip işlenmediğini öğrenme</li>
+        <li>İşlenmişse buna ilişkin bilgi talep etme</li>
+        <li>İşlenme amacını ve amacına uygun kullanılıp kullanılmadığını öğrenme</li>
+        <li>Yurt içinde ya da yurt dışında aktarıldığı üçüncü kişileri bilme</li>
+        <li>Eksik ya da yanlış işlenmişse düzeltilmesini isteme</li>
+        <li>KVKK'nın 7. maddesindeki şartlar çerçevesinde silinmesini ya da yok edilmesini isteme</li>
+        <li>Düzeltme, silme ve yok edilme işlemlerinin verilerin aktarıldığı üçüncü kişilere bildirilmesini isteme</li>
+        <li>İşlenen verilerin münhasıran otomatik sistemlerle analiz edilmesi sonucu aleyhinize bir sonuç çıkmasına itiraz etme</li>
+        <li>Kanuna aykırı işlenmesi sebebiyle zarara uğramanız halinde zararın giderilmesini talep etme</li>
+      </ul>
+
+      <h2>10. Başvuru Yöntemi</h2>
+      <p>
+        Başvurularınızı, kimliğinizi tespit edici bilgilerle birlikte yazılı olarak bize daha önce bildirdiğiniz ve sistemimizde kayıtlı olan
+        e-posta adresinizden {site.eposta} adresine iletebilirsiniz. Başvurunuz, talebin niteliğine göre
+        en geç otuz gün içinde sonuçlandırılır. İşlemin ayrıca bir maliyet gerektirmesi halinde Kişisel
+        Verileri Koruma Kurulunca belirlenen tarifedeki ücret alınabilir.
+      </p>
+      <p>
+        Başvurunuza verilen cevabı yetersiz bulmanız, süresinde cevap alamamanız halinde Kişisel Verileri
+        Koruma Kurumu'na şikâyette bulunma hakkınız saklıdır.
+      </p>
+
+      <h2>11. Güncelleme</h2>
+      <p>Bu metin en son {bilgi.guncelleme} tarihinde güncellenmiştir.</p>
     </div>
   </article>
 </Layout>
