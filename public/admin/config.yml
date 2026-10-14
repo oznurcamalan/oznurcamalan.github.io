@@ -1,5 +1,7 @@
 local_backend: true
 
+site_url: https://oznurcamalan.com
+
 backend:
   name: github
   repo: oznurcamalan/oznurcamalan.github.io

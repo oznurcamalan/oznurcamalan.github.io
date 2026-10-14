@@ -18,7 +18,11 @@ import { site } from '../data/site';
       </nav>
       <div class="alt-iletisim">
         <a href={`mailto:${site.eposta}`}>{site.eposta}</a>
-        <a href={`tel:${site.telefonLink}`}>{site.telefon}</a>
+        {site.telefonLink ? (
+          <a href={`tel:${site.telefonLink}`}>{site.telefon}</a>
+        ) : (
+          site.telefon && <span>{site.telefon}</span>
+        )}
         <a href="/kvkk" class="kvkk">KVKK Aydınlatma Metni</a>
       </div>
     </div>

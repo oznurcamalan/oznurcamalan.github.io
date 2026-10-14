@@ -27,13 +27,19 @@ import { site } from '../data/site';
             <a href={`mailto:${site.eposta}`}>{site.eposta}</a>
           </span>
         </li>
-        <li>
-          <span class="bilgi-ikon"><Ikon ad="telefon" /></span>
-          <span class="bilgi-metin">
-            <span class="ikincil bilgi-etiket">Telefon</span>
-            <a href={`tel:${site.telefonLink}`}>{site.telefon}</a>
-          </span>
-        </li>
+        {site.telefon && (
+          <li>
+            <span class="bilgi-ikon"><Ikon ad="telefon" /></span>
+            <span class="bilgi-metin">
+              <span class="ikincil bilgi-etiket">Telefon</span>
+              {site.telefonLink ? (
+                <a href={`tel:${site.telefonLink}`}>{site.telefon}</a>
+              ) : (
+                <span>{site.telefon}</span>
+              )}
+            </span>
+          </li>
+        )}
         <li>
           <span class="bilgi-ikon"><Ikon ad="konum" /></span>
           <span class="bilgi-metin">

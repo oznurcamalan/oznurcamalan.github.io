@@ -1,3 +1,9 @@
+## Site
+
+- Canlı adres: https://oznurcamalan.com (kök alan adı, `www` buna yönlenir, `base` yok). Alan adı `public/CNAME` içinde.
+- GitHub deposu adı `oznurcamalan/oznurcamalan.github.io` olarak kalır (Decap `repo:` satırı dahil); bu alan adı değildir.
+- Decap girişinde kullanılan Cloudflare Worker'ın (`sveltia-cms-auth`) `ALLOWED_DOMAINS` değeri `oznurcamalan.com` olmalı; bu değer repoda değil, Cloudflare'de tutulur.
+
 ## Development
 
 When starting the dev server, use background mode:

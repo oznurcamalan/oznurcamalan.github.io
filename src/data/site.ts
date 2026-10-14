@@ -13,11 +13,12 @@ const liste = <T>(deger: unknown): T[] => (Array.isArray(deger) ? (deger as T[])
 const yazili = (dizi: string[]) => dizi.map(metin).filter(Boolean);
 
 // '0 (532) 123 45 67' -> '+905321234567'
+// Alanda geçerli bir numara yoksa (ör. "Lütfen mail üzerinden...") boş döner; sayfalar o zaman düz metin gösterir.
 function telefonBaglantisi(telefon: string) {
-  const rakamlar = telefon.replace(/\D/g, '');
-  if (rakamlar.startsWith('90')) return `+${rakamlar}`;
-  if (rakamlar.startsWith('0')) return `+90${rakamlar.slice(1)}`;
-  return rakamlar ? `+90${rakamlar}` : '';
+  let rakamlar = telefon.replace(/\D/g, '');
+  if (rakamlar.startsWith('90')) rakamlar = rakamlar.slice(2);
+  else if (rakamlar.startsWith('0')) rakamlar = rakamlar.slice(1);
+  return rakamlar.length === 10 ? `+90${rakamlar}` : '';
 }
 
 const telefon = metin(veri.telefon);
