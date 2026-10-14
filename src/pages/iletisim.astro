@@ -1,20 +1,148 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import RandevuButonlari from '../components/RandevuButonlari.astro';
+import RandevuKartlari from '../components/RandevuKartlari.astro';
+import Ikon from '../components/Ikon.astro';
 import { site } from '../data/site';
 ---
 
 <Layout title="İletişim" description={`${site.ad} ile iletişime geçin`}>
-  <h1>İletişim</h1>
+  <section class="kapsayici sayfa-baslik">
+    <span class="etiket">İletişim ve Randevu</span>
+    <h1>Hazır olduğunuzda, size uygun yoldan başlayın.</h1>
+    <p class="giris">Aşağıdaki seçeneklerden birini seçtiğinizde takvim açılır, gün ve saati siz belirlersiniz.</p>
+  </section>
 
-  <p>
-    E-posta: <a href={`mailto:${site.eposta}`}>{site.eposta}</a>
-  </p>
-  <p>
-    Telefon: <a href={`tel:${site.telefonLink}`}>{site.telefon}</a>
-  </p>
-  <p>Şehir: {site.sehir}</p>
+  <section class="kapsayici secenekler">
+    <RandevuKartlari />
+  </section>
 
-  <p>Görüşme planlamak için aşağıdaki seçenekleri kullanabilirsiniz.</p>
-  <RandevuButonlari />
+  <section class="bolum-koyu">
+    <div class="kapsayici bilgiler-ic">
+      <h2>İletişim bilgileri</h2>
+      <ul class="bilgiler">
+        <li>
+          <span class="bilgi-ikon"><Ikon ad="eposta" /></span>
+          <span class="bilgi-metin">
+            <span class="ikincil bilgi-etiket">E-posta</span>
+            <a href={`mailto:${site.eposta}`}>{site.eposta}</a>
+          </span>
+        </li>
+        <li>
+          <span class="bilgi-ikon"><Ikon ad="telefon" /></span>
+          <span class="bilgi-metin">
+            <span class="ikincil bilgi-etiket">Telefon</span>
+            <a href={`tel:${site.telefonLink}`}>{site.telefon}</a>
+          </span>
+        </li>
+        <li>
+          <span class="bilgi-ikon"><Ikon ad="konum" /></span>
+          <span class="bilgi-metin">
+            <span class="ikincil bilgi-etiket">Şehir</span>
+            <span>{site.sehir}</span>
+          </span>
+        </li>
+      </ul>
+    </div>
+  </section>
 </Layout>
+
+<style>
+  .sayfa-baslik {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-top: 56px;
+    padding-bottom: 48px;
+  }
+  .sayfa-baslik h1 {
+    max-width: 780px;
+    font-size: 56px;
+  }
+  .sayfa-baslik .giris {
+    max-width: 620px;
+  }
+  .secenekler {
+    padding-top: 16px;
+    padding-bottom: 72px;
+  }
+  .bilgiler-ic {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+  .bilgiler-ic h2 {
+    font-size: 36px;
+    line-height: 1.2;
+  }
+  .bilgiler {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px 48px;
+    padding: 0;
+    list-style: none;
+  }
+  .bilgiler li {
+    flex: 1 1 260px;
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  .bilgi-ikon {
+    flex: 0 0 52px;
+    width: 52px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    background: var(--pudra);
+    color: var(--murekkep);
+  }
+  .bilgi-metin {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    overflow-wrap: anywhere;
+  }
+  .bilgi-etiket {
+    font-size: 14px;
+  }
+  .bilgi-metin a {
+    color: var(--murekkep);
+  }
+  .bilgi-metin a:hover {
+    color: var(--kil);
+  }
+  @media (max-width: 720px) {
+    .sayfa-baslik {
+      gap: 16px;
+      padding-top: 24px;
+      padding-bottom: 32px;
+    }
+    .sayfa-baslik h1 {
+      font-size: 38px;
+    }
+    .secenekler {
+      padding-top: 0;
+      padding-bottom: var(--bolum-bosluk);
+    }
+    .bilgiler-ic {
+      gap: 28px;
+      padding-top: var(--bolum-bosluk);
+      padding-bottom: var(--bolum-bosluk);
+    }
+    .bilgiler-ic h2 {
+      font-size: 30px;
+    }
+    .bilgiler {
+      flex-direction: column;
+      gap: 20px;
+    }
+    .bilgiler li {
+      flex-basis: auto;
+    }
+  }
+</style>

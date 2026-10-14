@@ -1,19 +1,66 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import MakaleKarti from '../../components/MakaleKarti.astro';
 import { getCollection } from 'astro:content';
+import { site } from '../../data/site';
 
 const makaleler = (await getCollection('makaleler', ({ data }) => !data.draft))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+// Tasarımdaki gibi 2'li ızgarada çapraz düzen: 1., 4., 5., 8. ... kartlar pudra zeminli
+const pudraMi = (i: number) => i % 4 === 0 || i % 4 === 3;
 ---
 
-<Layout title="Makaleler">
-  <h1>Makaleler</h1>
-  <ul>
-    {makaleler.map((makale) => (
-      <li>
-        <a href={`/makaleler/${makale.id}`}>{makale.data.title}</a>
-        <p>{makale.data.description}</p>
-      </li>
-    ))}
-  </ul>
+<Layout title="Makaleler" description={site.makalelerGiris}>
+  <section class="kapsayici sayfa-baslik">
+    <span class="etiket">Yazılar ve notlar</span>
+    <h1>Makaleler</h1>
+    <p class="giris">{site.makalelerGiris}</p>
+  </section>
+
+  <section class="kapsayici liste">
+    {makaleler.length > 0 ? (
+      makaleler.map((makale, i) => <MakaleKarti makale={makale} boyut="buyuk" pudra={pudraMi(i)} />)
+    ) : (
+      <p class="ikincil">Henüz yayımlanmış bir makale yok.</p>
+    )}
+  </section>
 </Layout>
+
+<style>
+  .sayfa-baslik {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-top: 56px;
+    padding-bottom: 48px;
+  }
+  .sayfa-baslik h1 {
+    font-size: 56px;
+  }
+  .sayfa-baslik .giris {
+    max-width: 620px;
+  }
+  .liste {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    padding-top: 24px;
+    padding-bottom: 104px;
+  }
+  @media (max-width: 720px) {
+    .sayfa-baslik {
+      gap: 16px;
+      padding-top: 24px;
+      padding-bottom: 24px;
+    }
+    .sayfa-baslik h1 {
+      font-size: 38px;
+    }
+    .liste {
+      gap: 16px;
+      padding-top: 8px;
+      padding-bottom: var(--bolum-bosluk);
+    }
+  }
+</style>

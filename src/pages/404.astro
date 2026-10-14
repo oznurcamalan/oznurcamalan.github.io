@@ -1,9 +1,40 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Ikon from '../components/Ikon.astro';
 ---
 
 <Layout title="Sayfa Bulunamadı">
-  <h1>Sayfa bulunamadı</h1>
-  <p>Aradığınız sayfa taşınmış ya da silinmiş olabilir.</p>
-  <p><a href="/">Ana sayfaya dön</a></p>
+  <article class="okuma">
+    <header class="okuma-baslik">
+      <span class="etiket">404</span>
+      <h1>Sayfa bulunamadı</h1>
+      <p class="okuma-ozet">Aradığınız sayfa taşınmış ya da silinmiş olabilir.</p>
+    </header>
+    <div class="dugmeler">
+      <a href="/" class="btn btn-birincil">Ana sayfaya dön <Ikon ad="ok" boyut={18} /></a>
+      <a href="/makaleler" class="btn btn-cerceveli">Makaleler</a>
+    </div>
+  </article>
 </Layout>
+
+<style>
+  .okuma {
+    padding-top: 72px;
+    padding-bottom: 120px;
+  }
+  .dugmeler {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: 36px;
+  }
+  @media (max-width: 720px) {
+    .okuma {
+      padding-top: 32px;
+      padding-bottom: var(--bolum-bosluk);
+    }
+    .dugmeler {
+      flex-direction: column;
+    }
+  }
+</style>

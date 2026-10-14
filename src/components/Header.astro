@@ -1,9 +1,197 @@
-<header>
-  <nav>
-    <a href="/">Ana Sayfa</a>
-    <a href="/hakkimda">Hakkımda</a>
-    <a href="/makaleler">Makaleler</a>
-    <a href="/randevu">Randevu</a>
-    <a href="/iletisim">İletişim</a>
+---
+import Ikon from './Ikon.astro';
+import { site } from '../data/site';
+
+const yol = Astro.url.pathname.replace(/\/+$/, '') || '/';
+
+const baglantilar = [
+  { href: '/', etiket: 'Ana Sayfa' },
+  { href: '/hakkimda', etiket: 'Hakkımda' },
+  { href: '/makaleler', etiket: 'Makaleler' },
+  { href: '/iletisim', etiket: 'İletişim' },
+];
+
+const aktifMi = (href: string) =>
+  href === '/' ? yol === '/' : yol === href || yol.startsWith(`${href}/`);
+---
+
+<header class="ust kapsayici" id="ust-bilgi">
+  <a href="/" class="logo">
+    <span class="logo-ad">{site.ad}</span>
+    <span class="logo-unvan">{site.unvan}</span>
+  </a>
+
+  <button
+    type="button"
+    class="menu-dugme"
+    aria-expanded="false"
+    aria-controls="ana-menu"
+    hidden
+  >
+    <span class="ac"><Ikon ad="menu" boyut={22} /></span>
+    <span class="kapa"><Ikon ad="kapat" boyut={22} /></span>
+    <span class="gorunmez">Menü</span>
+  </button>
+
+  <nav id="ana-menu" class="menu" aria-label="Ana menü">
+    <ul>
+      {baglantilar.map(({ href, etiket }) => (
+        <li>
+          <a href={href} class:list={['menu-baglanti', { aktif: aktifMi(href) }]} aria-current={aktifMi(href) ? 'page' : undefined}>
+            {etiket}
+          </a>
+        </li>
+      ))}
+    </ul>
+    <a href="/randevu" class="btn btn-birincil btn-kucuk menu-cta">Randevu Talep Et</a>
   </nav>
 </header>
+
+<script>
+  const ust = document.getElementById('ust-bilgi');
+  const dugme = ust?.querySelector<HTMLButtonElement>('.menu-dugme');
+  if (ust && dugme) {
+    ust.dataset.js = '';
+    dugme.hidden = false;
+    const ayarla = (acik: boolean) => {
+      dugme.setAttribute('aria-expanded', String(acik));
+      ust.toggleAttribute('data-acik', acik);
+    };
+    dugme.addEventListener('click', () => ayarla(dugme.getAttribute('aria-expanded') !== 'true'));
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && dugme.getAttribute('aria-expanded') === 'true') {
+        ayarla(false);
+        dugme.focus();
+      }
+    });
+  }
+</script>
+
+<style>
+  .ust {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px 32px;
+    padding-top: 28px;
+    padding-bottom: 28px;
+  }
+  .logo {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    color: var(--murekkep);
+    text-decoration: none;
+  }
+  .logo:hover {
+    color: var(--murekkep);
+  }
+  .logo-ad {
+    font-family: var(--serif);
+    font-size: 24px;
+    line-height: 1.2;
+  }
+  .logo-unvan {
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--yumusak);
+  }
+  .menu {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 4px 20px;
+  }
+  .menu ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 8px;
+    padding: 0;
+    list-style: none;
+  }
+  .menu-baglanti {
+    display: block;
+    padding: 12px 16px;
+    color: var(--murekkep);
+    font-weight: 500;
+    text-decoration: none;
+  }
+  .menu-baglanti:hover {
+    color: var(--kil);
+  }
+  .menu-baglanti.aktif {
+    font-weight: 600;
+    box-shadow: inset 0 -2px 0 var(--kil);
+  }
+  .menu-dugme {
+    width: 48px;
+    height: 48px;
+    padding: 0;
+    border: 0;
+    border-radius: 999px;
+    background: var(--pudra);
+    color: var(--murekkep);
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+  .menu-dugme .kapa {
+    display: none;
+  }
+  .menu-dugme[aria-expanded='true'] .ac {
+    display: none;
+  }
+  .menu-dugme[aria-expanded='true'] .kapa {
+    display: block;
+  }
+
+  @media (min-width: 861px) {
+    .menu-dugme {
+      display: none;
+    }
+  }
+
+  @media (max-width: 860px) {
+    .ust {
+      padding-top: 20px;
+      padding-bottom: 20px;
+    }
+    .logo-ad {
+      font-size: 22px;
+    }
+    .logo-unvan {
+      font-size: 11px;
+    }
+    .menu-dugme:not([hidden]) {
+      display: flex;
+    }
+    .menu {
+      flex-basis: 100%;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 16px;
+      padding-bottom: 8px;
+    }
+    .menu ul {
+      flex-direction: column;
+      gap: 0;
+    }
+    .menu-baglanti {
+      padding: 12px 0;
+      border-bottom: 1px solid var(--cizgi);
+    }
+    .menu-baglanti.aktif {
+      box-shadow: none;
+      color: var(--kil);
+    }
+    .menu-cta {
+      width: 100%;
+    }
+    /* JavaScript çalışıyorsa menü düğmeyle açılır; çalışmıyorsa menü hep görünür kalır */
+    .ust[data-js]:not([data-acik]) .menu {
+      display: none;
+    }
+  }
+</style>

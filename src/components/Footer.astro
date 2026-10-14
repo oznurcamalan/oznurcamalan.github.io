@@ -2,13 +2,135 @@
 import { site } from '../data/site';
 ---
 
-<footer>
-  <p>© {new Date().getFullYear()} {site.ad}</p>
-  <p><a href="/kvkk">KVKK Aydınlatma Metni</a></p>
-  <p>
-    <small>
-      Bu sitedeki içerikler bilgilendirme amaçlıdır; tanı ya da tedavi yerine geçmez.
-      Kendinizi iyi hissetmiyorsanız size en yakın sağlık kuruluşuna başvurun. Acil durumlarda 112 Acil Çağrı Merkezi'ni arayınız.
-    </small>
-  </p>
+<footer class="alt">
+  <div class="kapsayici alt-ic">
+    <div class="alt-ust">
+      <div class="alt-kimlik">
+        <span class="alt-ad">{site.ad}</span>
+        <span class="alt-unvan">{site.unvan}</span>
+      </div>
+      <nav class="alt-menu" aria-label="Alt menü">
+        <a href="/">Ana Sayfa</a>
+        <a href="/hakkimda">Hakkımda</a>
+        <a href="/makaleler">Makaleler</a>
+        <a href="/randevu">Randevu</a>
+        <a href="/iletisim">İletişim</a>
+      </nav>
+      <div class="alt-iletisim">
+        <a href={`mailto:${site.eposta}`}>{site.eposta}</a>
+        <a href={`tel:${site.telefonLink}`}>{site.telefon}</a>
+        <a href="/kvkk" class="kvkk">KVKK Aydınlatma Metni</a>
+      </div>
+    </div>
+    <p class="alt-not">
+      © {new Date().getFullYear()} {site.ad}. Bu sitedeki içerikler bilgilendirme amaçlıdır; tanı ya da tedavi
+      yerine geçmez. Kendinizi iyi hissetmiyorsanız size en yakın sağlık kuruluşuna başvurun. Acil durumlarda
+      112 Acil Çağrı Merkezi'ni arayınız.
+    </p>
+  </div>
 </footer>
+
+<style>
+  .alt {
+    background: var(--altbilgi);
+    color: var(--yulaf);
+  }
+  .alt-ic {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+    padding-top: 72px;
+    padding-bottom: 40px;
+  }
+  .alt-ust {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px 64px;
+  }
+  .alt-kimlik {
+    flex: 2 1 300px;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .alt-ad {
+    font-family: var(--serif);
+    font-size: 26px;
+    line-height: 1.2;
+  }
+  .alt-unvan {
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--altbilgi-metin);
+  }
+  .alt-menu {
+    flex: 1 1 160px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .alt a {
+    color: var(--yulaf);
+    text-decoration: none;
+  }
+  .alt a:hover {
+    color: #fff;
+    text-decoration: underline;
+  }
+  .alt :focus-visible {
+    outline-color: var(--yulaf);
+  }
+  .alt-menu a {
+    padding: 8px 0;
+  }
+  .alt-iletisim {
+    flex: 1 1 220px;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    overflow-wrap: anywhere;
+  }
+  .alt-iletisim a {
+    color: var(--altbilgi-metin);
+  }
+  .alt-iletisim .kvkk {
+    padding: 8px 0;
+    color: var(--yulaf);
+    text-decoration: underline;
+  }
+  .alt-not {
+    padding-top: 32px;
+    border-top: 1px solid var(--altbilgi-cizgi);
+    font-size: 14px;
+    color: var(--altbilgi-metin);
+  }
+  @media (max-width: 720px) {
+    .alt-ic {
+      gap: 32px;
+      padding-top: 48px;
+      padding-bottom: 32px;
+    }
+    .alt-ust {
+      flex-direction: column;
+      gap: 32px;
+    }
+    .alt-ad {
+      font-size: 24px;
+    }
+    .alt-unvan {
+      font-size: 12px;
+    }
+    .alt-menu {
+      gap: 0;
+    }
+    .alt-menu a {
+      padding: 12px 0;
+    }
+    .alt-not {
+      padding-top: 24px;
+    }
+  }
+</style>

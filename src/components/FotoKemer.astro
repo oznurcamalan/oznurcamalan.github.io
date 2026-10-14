@@ -1,0 +1,92 @@
+---
+// Kemer biçimli fotoğraf alanı. Fotoğraf site.foto (profil.json) içinden gelir; boşsa yer tutucu gösterilir.
+import { site } from '../data/site';
+
+interface Props {
+  daire?: 'sol-alt' | 'sag-ust';
+  genislik?: number;
+  yukseklik?: number;
+}
+
+const { daire = 'sol-alt', genislik = 380, yukseklik = 480 } = Astro.props;
+---
+
+<div class="foto" style={`--g: ${genislik}px; --y: ${yukseklik}px`}>
+  <div class:list={['daire', daire]} aria-hidden="true"></div>
+  {site.foto ? (
+    <img
+      class="kemer"
+      src={site.foto}
+      alt={site.fotoAlt || `${site.ad}, ${site.unvan}`}
+      width={genislik}
+      height={yukseklik}
+      loading="eager"
+      decoding="async"
+    />
+  ) : (
+    <div class="kemer yer-tutucu">[Danışmanın fotoğrafı]</div>
+  )}
+</div>
+
+<style>
+  .foto {
+    position: relative;
+    width: var(--g);
+    max-width: 100%;
+  }
+  .daire {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    border-radius: 999px;
+    background: var(--pudra-derin);
+  }
+  .sol-alt {
+    left: -28px;
+    bottom: 36px;
+  }
+  .sag-ust {
+    width: 110px;
+    height: 110px;
+    right: -24px;
+    top: 48px;
+  }
+  .kemer {
+    position: relative;
+    width: 100%;
+    height: var(--y);
+    border-radius: 999px 999px 28px 28px;
+    background: var(--pudra);
+    object-fit: cover;
+  }
+  .yer-tutucu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 32px;
+    text-align: center;
+    color: var(--pudra-metin);
+    font-size: 15px;
+  }
+  @media (max-width: 720px) {
+    .foto {
+      width: 280px;
+    }
+    .kemer {
+      height: 360px;
+      border-radius: 999px 999px 24px 24px;
+    }
+    .daire {
+      width: 88px;
+      height: 88px;
+    }
+    .sol-alt {
+      left: -16px;
+      bottom: 28px;
+    }
+    .sag-ust {
+      right: -16px;
+      top: 36px;
+    }
+  }
+</style>

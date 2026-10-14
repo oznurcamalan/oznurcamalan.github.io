@@ -1,22 +1,54 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import RandevuButonlari from '../components/RandevuButonlari.astro';
+import RandevuKartlari from '../components/RandevuKartlari.astro';
 ---
 
 <Layout title="Randevu" description="Ön görüşme ve randevu talebi">
-  <h1>Randevu</h1>
-  <p>
-    İlk kez iletişime geçiyorsanız ön görüşme talep edebilir, daha önce görüştüyseniz
-    doğrudan randevu talep edebilirsiniz.
-  </p>
+  <section class="kapsayici sayfa-baslik">
+    <span class="etiket">Randevu</span>
+    <h1>Görüşme planlamak birkaç adım sürer.</h1>
+    <p class="giris">
+      İlk kez iletişime geçiyorsanız ön görüşme talep edebilir, daha önce görüştüyseniz doğrudan randevu
+      talep edebilirsiniz. Seçtiğinizde takvim açılır, gün ve saati siz belirlersiniz.
+    </p>
+  </section>
 
-  <RandevuButonlari />
-
-  <p>
-    <small>
-      Randevu formuna sağlık bilgisi ya da ayrıntılı kişisel bilgi yazmayınız.
-      Kişisel verilerinizin işlenmesi hakkında bilgi için
-      <a href="/kvkk">KVKK Aydınlatma Metni</a>'ni okuyabilirsiniz.
-    </small>
-  </p>
+  <section class="kapsayici secenekler">
+    <RandevuKartlari />
+  </section>
 </Layout>
+
+<style>
+  .sayfa-baslik {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-top: 56px;
+    padding-bottom: 48px;
+  }
+  .sayfa-baslik h1 {
+    max-width: 780px;
+    font-size: 56px;
+  }
+  .sayfa-baslik .giris {
+    max-width: 620px;
+  }
+  .secenekler {
+    padding-top: 16px;
+    padding-bottom: 104px;
+  }
+  @media (max-width: 720px) {
+    .sayfa-baslik {
+      gap: 16px;
+      padding-top: 24px;
+      padding-bottom: 32px;
+    }
+    .sayfa-baslik h1 {
+      font-size: 38px;
+    }
+    .secenekler {
+      padding-top: 0;
+      padding-bottom: var(--bolum-bosluk);
+    }
+  }
+</style>

@@ -1,6 +1,9 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import RandevuButonlari from '../components/RandevuButonlari.astro';
+import FotoKemer from '../components/FotoKemer.astro';
+import MakaleKarti from '../components/MakaleKarti.astro';
+import Ikon from '../components/Ikon.astro';
 import { getCollection } from 'astro:content';
 import { site } from '../data/site';
 
@@ -10,37 +13,274 @@ const sonMakaleler = (await getCollection('makaleler', ({ data }) => !data.draft
 ---
 
 <Layout title="Ana Sayfa" description={site.slogan}>
-  <section>
-    <h1>{site.ad}</h1>
-    <p>{site.unvan}</p>
-    <p>{site.slogan}</p>
-    <RandevuButonlari />
+  <section class="hero kapsayici">
+    <div class="hero-metin">
+      <span class="etiket">Psikolojik Danışmanlık · {site.sehir}</span>
+      <h1>{site.heroBaslik}</h1>
+      <p class="giris">{site.slogan}</p>
+      <RandevuButonlari ok />
+    </div>
+    <div class="hero-foto">
+      <FotoKemer daire="sol-alt" />
+    </div>
   </section>
 
-  <section>
-    <h2>Hizmetler</h2>
-    <ul>
-      {site.hizmetler.map((hizmet) => (
-        <li>
-          <h3>{hizmet.baslik}</h3>
-          <p>{hizmet.aciklama}</p>
+  <section class="bolum-koyu">
+    <div class="kapsayici bolum yigin">
+      <div class="bolum-baslik">
+        <h2>Hizmetler</h2>
+        <p class="ikincil">{site.hizmetlerGiris}</p>
+      </div>
+      <div class="hizmetler">
+        {site.hizmetler.map((hizmet) => (
+          <div class="hizmet">
+            <div class="hizmet-ikon">
+              <Ikon ad={hizmet.ikon} />
+            </div>
+            <h3>{hizmet.baslik}</h3>
+            <p>{hizmet.aciklama}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="kapsayici bolum yigin">
+    <h2>Süreç nasıl ilerler?</h2>
+    <ol class="adimlar">
+      {site.surecAdimlari.map((adim, i) => (
+        <li class="adim">
+          <span class="adim-no" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+          <div class="adim-metin">
+            <h3>{adim.baslik}</h3>
+            <p class="ikincil">{adim.aciklama}</p>
+          </div>
         </li>
       ))}
-    </ul>
+    </ol>
   </section>
 
   {sonMakaleler.length > 0 && (
-    <section>
-      <h2>Son Makaleler</h2>
-      <ul>
-        {sonMakaleler.map((makale) => (
-          <li>
-            <a href={`/makaleler/${makale.id}`}>{makale.data.title}</a>
-            <p>{makale.data.description}</p>
-          </li>
-        ))}
-      </ul>
-      <p><a href="/makaleler">Tüm makaleler</a></p>
+    <section class="kapsayici son-makaleler yigin">
+      <div class="makale-baslik">
+        <h2>Son Makaleler</h2>
+        <a href="/makaleler" class="ok-baglanti tum-ust">
+          Tüm makaleler <Ikon ad="ok" boyut={18} />
+        </a>
+      </div>
+      <div class="makaleler">
+        {sonMakaleler.map((makale) => <MakaleKarti makale={makale} />)}
+      </div>
+      <a href="/makaleler" class="ok-baglanti tum-alt">
+        Tüm makaleler <Ikon ad="ok" boyut={18} />
+      </a>
     </section>
   )}
+
+  <section class="kapsayici cta-alan">
+    <div class="cta-bandi">
+      <h2>Hazır olduğunuzda, ilk adımı birlikte atalım.</h2>
+      <RandevuButonlari hizala="orta" />
+    </div>
+  </section>
 </Layout>
+
+<style>
+  .hero {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 48px;
+    padding-top: 56px;
+    padding-bottom: 104px;
+  }
+  .hero-metin {
+    flex: 1 1 520px;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  .hero-metin .giris {
+    max-width: 520px;
+  }
+  .hero-metin :global(.randevu-butonlari) {
+    margin-top: 8px;
+  }
+  .hero-foto {
+    flex: 1 1 360px;
+    display: flex;
+    justify-content: center;
+  }
+  .yigin {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+  }
+  .bolum-baslik {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-width: 640px;
+  }
+  .hizmetler {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+  .hizmet {
+    flex: 1 1 300px;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 36px;
+    border-radius: 28px;
+    background: var(--pudra);
+  }
+  .hizmet h3 {
+    font-size: 26px;
+    line-height: 1.25;
+  }
+  .hizmet p {
+    color: var(--pudra-metin);
+  }
+  .hizmet-ikon {
+    width: 52px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    background: var(--yulaf);
+    color: var(--murekkep);
+  }
+  .adimlar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    padding: 0;
+    list-style: none;
+  }
+  .adim {
+    flex: 1 1 280px;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .adim-metin {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .adim-no {
+    font-family: var(--serif);
+    font-size: 44px;
+    font-weight: 300;
+    line-height: 1.1;
+    color: var(--kil);
+  }
+  .adim h3 {
+    font-family: var(--sans);
+    font-size: 20px;
+    font-weight: 600;
+  }
+  .son-makaleler {
+    gap: 40px;
+    padding-bottom: var(--bolum-bosluk);
+  }
+  .makale-baslik {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  .makaleler {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+  .tum-alt {
+    display: none;
+  }
+  .cta-alan {
+    padding-bottom: 104px;
+  }
+
+  @media (max-width: 720px) {
+    .hero {
+      gap: 24px;
+      padding-top: 24px;
+      padding-bottom: 48px;
+    }
+    .hero-metin {
+      flex-basis: 100%;
+      gap: 20px;
+    }
+    .hero-metin :global(.randevu-butonlari) {
+      margin-top: 4px;
+    }
+    .hero-foto {
+      flex-basis: 100%;
+    }
+    .yigin {
+      gap: 32px;
+    }
+    .bolum-baslik {
+      gap: 10px;
+    }
+    .hizmetler {
+      gap: 16px;
+    }
+    .hizmet {
+      flex-basis: 100%;
+      gap: 12px;
+      padding: 28px;
+      border-radius: 24px;
+    }
+    .hizmet h3 {
+      font-size: 24px;
+    }
+    .hizmet-ikon {
+      width: 48px;
+      height: 48px;
+    }
+    .adimlar {
+      flex-direction: column;
+      gap: 28px;
+    }
+    .adim {
+      flex-basis: auto;
+      flex-direction: row;
+      gap: 20px;
+    }
+    .adim-metin {
+      gap: 4px;
+    }
+    .adim-no {
+      flex: 0 0 56px;
+      font-size: 38px;
+    }
+    .adim h3 {
+      font-size: 18px;
+    }
+    .son-makaleler {
+      gap: 28px;
+    }
+    .makaleler {
+      gap: 16px;
+    }
+    .tum-ust {
+      display: none;
+    }
+    .tum-alt {
+      display: inline-flex;
+      margin-top: -12px;
+    }
+    .cta-alan {
+      padding-bottom: var(--bolum-bosluk);
+    }
+  }
+</style>

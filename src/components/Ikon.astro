@@ -1,0 +1,63 @@
+---
+// Tasarımdaki satır içi çizgi ikonları
+interface Props {
+  ad: 'kisi' | 'cift' | 'video' | 'eposta' | 'telefon' | 'konum' | 'ok' | 'geri' | 'menu' | 'kapat';
+  boyut?: number;
+}
+
+const { ad, boyut = 24 } = Astro.props;
+const kalin = ['ok', 'geri', 'menu', 'kapat'].includes(ad);
+---
+
+<svg
+  width={boyut}
+  height={boyut}
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width={kalin ? 1.75 : 1.5}
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  aria-hidden="true"
+  focusable="false"
+>
+  {ad === 'kisi' && (
+    <>
+      <circle cx="12" cy="8" r="4" />
+      <path d="M4 21c0-4 3.6-7 8-7s8 3 8 7" />
+    </>
+  )}
+  {ad === 'cift' && (
+    <>
+      <circle cx="9" cy="8" r="3.5" />
+      <circle cx="16.5" cy="9" r="3" />
+      <path d="M2.5 20c0-3.5 3-6 6.5-6s6.5 2.5 6.5 6" />
+      <path d="M16 14.2c3 0 5.5 2 5.5 5.3" />
+    </>
+  )}
+  {ad === 'video' && (
+    <>
+      <rect x="3" y="6" width="13" height="12" rx="3" />
+      <path d="M16 10l5-3v10l-5-3" />
+    </>
+  )}
+  {ad === 'eposta' && (
+    <>
+      <rect x="3" y="5" width="18" height="14" rx="3" />
+      <path d="M4 8l8 6 8-6" />
+    </>
+  )}
+  {ad === 'telefon' && (
+    <path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z" />
+  )}
+  {ad === 'konum' && (
+    <>
+      <path d="M12 21s7-6.2 7-11a7 7 0 0 0-14 0c0 4.8 7 11 7 11z" />
+      <circle cx="12" cy="10" r="2.5" />
+    </>
+  )}
+  {ad === 'ok' && <path d="M5 12h14M13 6l6 6-6 6" />}
+  {ad === 'geri' && <path d="M19 12H5M11 6l-6 6 6 6" />}
+  {ad === 'menu' && <path d="M4 8h16M4 16h16" />}
+  {ad === 'kapat' && <path d="M6 6l12 12M18 6L6 18" />}
+</svg>

@@ -1,27 +1,199 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import RandevuButonlari from '../components/RandevuButonlari.astro';
+import FotoKemer from '../components/FotoKemer.astro';
 import { site } from '../data/site';
 ---
 
 <Layout title="Hakkımda" description={`${site.ad} hakkında`}>
-  <h1>Hakkımda</h1>
+  <section class="tanitim kapsayici">
+    <div class="tanitim-foto">
+      <FotoKemer daire="sag-ust" genislik={360} yukseklik={460} />
+    </div>
+    <div class="tanitim-metin">
+      <span class="etiket">Hakkımda</span>
+      <h1>{site.ad}</h1>
+      <p class="giris">{site.unvan}</p>
+      {site.hakkinda.map((paragraf) => <p class="paragraf">{paragraf}</p>)}
+    </div>
+  </section>
 
-  <img
-    src="/images/danisman.jpg"
-    alt={`${site.ad}, ${site.unvan}`}
-    width="320"
-    height="400"
-  />
+  <section class="bolum-koyu">
+    <div class="kapsayici iki-sutun">
+      <div class="sutun">
+        <h2>Eğitim</h2>
+        <ul class="egitim">
+          {site.egitim.map((satir) => <li>{satir}</li>)}
+        </ul>
+      </div>
+      <div class="sutun">
+        <h2>Çalışma alanları</h2>
+        <ul class="alanlar">
+          {site.calismaAlanlari.map((alan) => <li>{alan}</li>)}
+        </ul>
+      </div>
+    </div>
+  </section>
 
-  <p>Danışmanın kendini tanıttığı yazı buraya gelecek.</p>
+  <section class="kapsayici bolum yaklasim">
+    <div class="yaklasim-baslik">
+      <h2>Çalışma yaklaşımım</h2>
+    </div>
+    <div class="yaklasim-metin">
+      {site.yaklasim.map((paragraf) => <p>{paragraf}</p>)}
+    </div>
+  </section>
 
-  <h2>Eğitim</h2>
-  <ul>
-    <li>Üniversite, bölüm, yıl</li>
-  </ul>
-
-  <h2>Çalışma Alanları</h2>
-  <ul>
-    <li>Çalışma alanı</li>
-  </ul>
+  <section class="kapsayici cta-alan">
+    <div class="cta-bandi">
+      <h2>Tanışmak için kısa bir ön görüşmeyle başlayabiliriz.</h2>
+      <RandevuButonlari hizala="orta" />
+    </div>
+  </section>
 </Layout>
+
+<style>
+  h2 {
+    font-size: 36px;
+    line-height: 1.2;
+  }
+  .tanitim {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 64px;
+    padding-top: 48px;
+    padding-bottom: var(--bolum-bosluk);
+  }
+  .tanitim-foto {
+    flex: 1 1 340px;
+    display: flex;
+    justify-content: center;
+  }
+  .tanitim-metin {
+    flex: 1 1 520px;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+  }
+  .tanitim-metin h1 {
+    font-size: 56px;
+  }
+  .paragraf {
+    max-width: 560px;
+  }
+  .iki-sutun {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 56px;
+    padding-top: 88px;
+    padding-bottom: 88px;
+  }
+  .sutun {
+    flex: 1 1 400px;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  .egitim,
+  .alanlar {
+    padding: 0;
+    list-style: none;
+  }
+  .egitim {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .egitim li {
+    padding: 20px 24px;
+    border-radius: 20px;
+    border: 1px solid var(--cizgi);
+    background: var(--kart);
+  }
+  .alanlar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .alanlar li {
+    padding: 12px 22px;
+    border-radius: 999px;
+    background: var(--pudra);
+    color: var(--murekkep);
+  }
+  .yaklasim {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 48px;
+  }
+  .yaklasim-baslik {
+    flex: 1 1 320px;
+    min-width: 0;
+  }
+  .yaklasim-metin {
+    flex: 2 1 480px;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .cta-alan {
+    padding-bottom: 104px;
+  }
+  .cta-alan .cta-bandi {
+    padding-top: 64px;
+    padding-bottom: 64px;
+  }
+  .cta-alan h2 {
+    font-size: 36px;
+  }
+
+  @media (max-width: 720px) {
+    h2,
+    .cta-alan h2 {
+      font-size: 30px;
+    }
+    .tanitim {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 40px;
+      padding-top: 24px;
+    }
+    .tanitim-foto,
+    .tanitim-metin {
+      flex-basis: auto;
+    }
+    .tanitim-metin {
+      gap: 16px;
+    }
+    .tanitim-metin h1 {
+      font-size: 38px;
+    }
+    .iki-sutun {
+      gap: 40px;
+      padding-top: var(--bolum-bosluk);
+      padding-bottom: var(--bolum-bosluk);
+    }
+    .sutun,
+    .yaklasim-baslik,
+    .yaklasim-metin {
+      flex-basis: 100%;
+    }
+    .sutun {
+      gap: 20px;
+    }
+    .yaklasim {
+      gap: 20px;
+    }
+    .cta-alan {
+      padding-bottom: var(--bolum-bosluk);
+    }
+    .cta-alan .cta-bandi {
+      padding-top: 40px;
+      padding-bottom: 40px;
+    }
+  }
+</style>
